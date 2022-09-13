@@ -1,7 +1,7 @@
 import React from 'react'
-import Feature from '../Components/Feature'
-import Hero from '../Components/Hero'
-import Services from '../Components/Services'
+import Feature from '../Components/Home/Feature'
+import Hero from '../Components/Home/Hero'
+import Services from '../Components/Home/Services'
 
 export default function Home() {
   return (
