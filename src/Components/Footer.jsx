@@ -1,13 +1,11 @@
 import {React} from 'react';
 import fbIcon from '../misc/facebook.svg';
 import { Link } from 'react-router-dom';
+import { Map, Marker } from "pigeon-maps"
 
-const defaultProps = {
-  center: {
-    lat: 10.99835602,
-    lng: 77.01502627
-  },
-  zoom: 11
+const Location = {
+  lat: -27.58916254588583, 
+  lng: 152.7526648439019,
 };
 
 const AnyReactComponent = ({ text }) => <div>{text}</div>;
@@ -115,8 +113,18 @@ export default function Footer() {
         <h6 className="uppercase font-semibold mb-4 flex justify-center md:justify-start">
           Map
         </h6>
-        <div style={{ height: "120px", width: "120px" }}>
-        
+        <div className='flex justify-center md:justify-start'>
+          <div className='flex w-[300px] h-[200px] justify-start border-[2px] border-black'>
+            <Map center={[Location.lat,Location.lng]}>
+              <Marker 
+                width={50}
+                anchor={[Location.lat, Location.lng]} 
+                setCenterZoom={12}
+                color={"red"} 
+                onClick={() =>{window.location.href="https://www.google.com/maps/place/90+Pine+Mountain+Rd,+Brassall+QLD+4305/@-27.5868406,152.7570984,15.5z/data=!4m5!3m4!1s0x6b96b40da16dccd7:0x636a1a8708b4083d!8m2!3d-27.5891946!4d152.7526661"}} 
+            />
+            </Map>
+          </div>
         </div>
       </div>
       </div>
