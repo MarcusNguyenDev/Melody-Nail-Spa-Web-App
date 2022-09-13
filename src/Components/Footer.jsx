@@ -1,7 +1,8 @@
 import {React} from 'react';
 import fbIcon from '../misc/facebook.svg';
 import { Link } from 'react-router-dom';
-import { Map, Marker } from "pigeon-maps"
+import { Map, Marker } from "pigeon-maps";
+
 
 const Location = {
   lat: -27.589416439686605, 
