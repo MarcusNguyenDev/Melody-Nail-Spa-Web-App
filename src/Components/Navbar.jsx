@@ -65,7 +65,7 @@ export default function Navbar() {
           <div>
             <Link
               to={linkDestination.about}
-              className="flex mr-2 p-3 rounded-xl w-28 bg-pink-200 hover:bg-pink-400 text-pink-800 duration-300 font-bold"
+              className="flex mr-2 p-3 rounded-xl bg-pink-200 hover:bg-pink-400 text-pink-800 duration-300 font-bold"
             >
               Staff Portal
             </Link>
