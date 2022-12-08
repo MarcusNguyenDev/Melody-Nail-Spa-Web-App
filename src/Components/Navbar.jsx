@@ -9,12 +9,11 @@ const linkDestination = {
   services: "/",
   about: "/",
   contact: "/contact",
-  booking: "",
+  booking: "/booking",
 };
 
 export default function Navbar() {
   const [sm_Toggle, set_Toggle] = useState(false);
-
   useEffect(() => {
     window.addEventListener("resize", () => {
       set_Toggle(false);
@@ -64,7 +63,7 @@ export default function Navbar() {
 
           <div>
             <Link
-              to={"/staffportal"}
+              to={"/StaffPortal"}
               className="flex mr-2 p-3 rounded-xl bg-pink-200 hover:bg-pink-400 text-pink-800 duration-300 font-bold"
             >
               Staff Portal
