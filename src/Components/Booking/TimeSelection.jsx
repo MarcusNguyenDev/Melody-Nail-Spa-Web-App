@@ -32,7 +32,7 @@ export default function TimeSelection(props) {
       <div
         className={
           Selecting
-            ? "grid grid-cols-2 border-2 border-pink-700 rounded-b-lg pt-1 pb-1"
+            ? "grid grid-cols-2 border-2 border-pink-700 bg-pink-100 rounded-b-lg pt-1 pb-1"
             : selected
             ? "grid grid-cols-2 border-2 border-emerald-600 pt-1 pb-1"
             : "grid grid-cols-2 border pt-1 pb-1"

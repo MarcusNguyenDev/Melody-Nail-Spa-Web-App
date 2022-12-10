@@ -97,7 +97,7 @@ export default function Booking() {
             ></input>
           </div>
         </div>
-        <label className="flex justify-center text-[16px] text-pink-800 ml-1 mr-1">
+        <label className="flex justify-center text-[16px] text-pink-800 mx-8">
           We do not store your email, we just use it once per booking for
           sending confirmation email and cancelation link
         </label>
@@ -145,6 +145,7 @@ export default function Booking() {
             />
           </div>
         </div>
+
         {DateError ? (
           <div className="m-[10px]">
             <label className="text-red-600">
@@ -161,7 +162,7 @@ export default function Booking() {
           Time
         </label>
 
-        <label className="flex justify-center text-[16px] text-pink-800 ml-1 mr-1">
+        <label className="flex justify-center text-[16px] text-pink-800 mx-8">
           If the time you want is unavailable, please select other date. Thank
           you!
         </label>

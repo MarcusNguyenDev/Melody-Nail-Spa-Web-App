@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
+import api from "../api.json";
 
 export default function Login() {
   const [userName, setUserName] = useState("");
@@ -101,8 +102,6 @@ function postLogin(prop) {
     },
     body: JSON.stringify(prop),
   };
-  const response = fetch("http://localhost:3001/users/login", message).then(
-    (res) => res.json()
-  );
+  const response = fetch(api.api + "/login", message).then((res) => res.json());
   return response;
 }
