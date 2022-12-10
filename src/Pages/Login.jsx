@@ -102,6 +102,8 @@ function postLogin(prop) {
     },
     body: JSON.stringify(prop),
   };
-  const response = fetch(api.api + "/login", message).then((res) => res.json());
+  const response = fetch(api.api + "/users/login", message).then((res) =>
+    res.json()
+  );
   return response;
 }
