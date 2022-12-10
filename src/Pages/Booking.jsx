@@ -22,6 +22,8 @@ const time = [
   { timeId: 11, time: "5:15pm - 6:00pm" },
   { timeId: 12, time: "6:00pm - 6:45pm" },
 ];
+//Constant unchange for reference only
+const today = new Date();
 
 export default function Booking() {
   const navigate = useNavigate();
@@ -33,6 +35,7 @@ export default function Booking() {
   const [ServiceTypes, setServiceType] = useState([]);
   const [BookingError, setBookingError] = useState(false);
   const [RaiseError, setRaiseError] = useState("");
+  const [ServicesList, setServicesList] = useState([]);
 
   const emailRef = useRef();
 
@@ -46,15 +49,30 @@ export default function Booking() {
       return item.TimeId !== props.TimeId;
     });
     setSelectedService(arr);
-    console.log(SelectedServices);
   };
-
   useEffect(() => {
     fetch(api.api + "/servicetypes")
       .then((res) => res.json())
       .then((res) => {
         setServiceType(res);
       });
+    fetch(api.api + "/services")
+      .then((res) => res.json())
+      .then((data) => {
+        setServicesList(data);
+      });
+    fetch(
+      api.api +
+        `/booking/available?date=${
+          today.getFullYear() +
+          "-" +
+          (today.getMonth() + 1) +
+          "-" +
+          today.getDate()
+        }`
+    )
+      .then((res) => res.json())
+      .then((res) => setAvailableTime(res));
   }, []);
 
   return (
@@ -142,20 +160,21 @@ export default function Booking() {
         <label className="flex justify-center text-[20px] font-bold text-pink-800 m-4 mb-0">
           Time
         </label>
+
         <label className="flex justify-center text-[16px] text-pink-800 ml-1 mr-1">
-          You have {SelectedServices.length} services to select a time
-        </label>
-        <label className="flex justify-center text-[16px] text-pink-800 ml-1 mr-1">
-          If the time you want is unavailable, please select other date
+          If the time you want is unavailable, please select other date. Thank
+          you!
         </label>
         {time.map((time) => (
           <TimeSelection
+            key={time.timeId}
             time={time.time}
             id={time.timeId}
-            available={AvailableTime.includes(0)}
+            available={AvailableTime.includes(time.timeId)}
             selectCallback={SelectionCallback}
             unSelectCallback={UnSelectionCallback}
             ServiceTypes={ServiceTypes}
+            ServicesList={ServicesList}
           />
         ))}
 

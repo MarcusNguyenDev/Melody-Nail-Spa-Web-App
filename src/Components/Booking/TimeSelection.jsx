@@ -29,18 +29,26 @@ export default function TimeSelection(props) {
 
   return (
     <div>
-      <div className="grid grid-cols-2 border pt-1 pb-1">
-        <label className="text-lg]">{props.time}</label>
+      <div
+        className={
+          Selecting
+            ? "grid grid-cols-2 border-2 border-pink-700 rounded-b-lg pt-1 pb-1"
+            : selected
+            ? "grid grid-cols-2 border-2 border-emerald-600 pt-1 pb-1"
+            : "grid grid-cols-2 border pt-1 pb-1"
+        }
+      >
+        <label className="text-xl font-semibold">{props.time}</label>
         {available ? (
           <div className="flex justify-center">
             {selected ? (
               <div>
-                <div className="text-lg font-semibold text-black">
+                <div className="text-lg font-semibold text-emerald-700">
                   {"Selected: " + selectedService.ServiceName}
                 </div>
                 <div>
                   <button
-                    className=" text-red-700 font-bold hover:bg-red-700 hover:text-white p-2 rounded-xl"
+                    className=" text-red-700 font-bold w-[30px] h-[30px] border-2 text-[15px] border-red-700 hover:bg-red-700 hover:text-white "
                     onClick={() => {
                       setSelected(!selected);
                       props.unSelectCallback({
@@ -50,7 +58,7 @@ export default function TimeSelection(props) {
                       });
                     }}
                   >
-                    Remove Selection
+                    X
                   </button>
                 </div>
               </div>
@@ -74,20 +82,21 @@ export default function TimeSelection(props) {
         )}
       </div>
       {Selecting ? (
-        <div>
-          <div className="relative pl-7 pr-7 flex-auto">
-            {ServiceTypes.map((data) => {
-              return (
-                <div key={data.Id}>
-                  <BookingServices
-                    Id={data.Id}
-                    ServiceType={data.ServiceTypeName}
-                    SelectionCallback={ServiceSelectionCallback}
-                  />
-                </div>
-              );
-            })}
-          </div>
+        <div className="mb-4 mx-4 border-b-2 border-x-2 shadow-lg px-2 rounded-b-xl border-pink-700 pb-2">
+          {ServiceTypes.map((data) => {
+            return (
+              <div key={data.Id}>
+                <BookingServices
+                  Id={data.Id}
+                  ServiceType={data.ServiceTypeName}
+                  SelectionCallback={ServiceSelectionCallback}
+                  ServicesList={props.ServicesList.filter((e) => {
+                    return e.ServiceTypeId === data.Id;
+                  })}
+                />
+              </div>
+            );
+          })}
         </div>
       ) : null}
     </div>

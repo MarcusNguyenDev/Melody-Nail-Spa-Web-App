@@ -32,6 +32,7 @@ export default function TodayBookingView() {
   const [selectedId] = useState(searchParams.get("id"));
   const [bookedServices, setBookedServices] = useState([]);
   const [Customer, setCustomer] = useState("");
+  const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
     const message = {
@@ -55,6 +56,7 @@ export default function TodayBookingView() {
     ])
       .then(([servicesList, bookedServices, BookingList]) =>
         bookedServices.map((services) => ({
+          Id: services.Id,
           BookedServiceId: services.Id,
           BookingId: services.BookingId,
           Time: time.find((e) => e.timeId === services.Time).time,
@@ -70,9 +72,10 @@ export default function TodayBookingView() {
       .then((data) => {
         setBookedServices(data);
         setCustomer(data[0].Customer);
+        setIsUpdating(false);
       })
       .catch((err) => console.log(err));
-  }, [selectedId]);
+  }, [selectedId, isUpdating]);
 
   return (
     <div>
@@ -87,6 +90,13 @@ export default function TodayBookingView() {
         <div className="bg-white m-4 p-4 rounded-lg">
           <div className="flex text-xl font-bold">Booking ID: {selectedId}</div>
           <div className="flex text-xl font-bold">Customer: {Customer}</div>
+          <div className="flex text-xl font-bold">
+            Price: $
+            {bookedServices.reduce(
+              (accumulator, obj) => accumulator + parseInt(obj.Price),
+              0
+            )}
+          </div>
           <div className="grid grid-cols-5 border bg-blue-400">
             <div className="border">Time</div>
             <div className="border">Service Name</div>
@@ -101,7 +111,53 @@ export default function TodayBookingView() {
                 <div className="border">{data.ServiceName}</div>
                 <div className="border">{data.Price}</div>
                 <div className="border">{data.Done}</div>
-                <div className="border"></div>
+                <div className="border">
+                  {data.Done === "NO" ? (
+                    <button
+                      className="px-2 text-green-600 font-bold"
+                      onClick={() => {
+                        const message = {
+                          method: "PUT",
+                          headers: {
+                            accept: "application/json",
+                            "Content-Type": "application/json",
+                            authorization:
+                              "Bearer " + sessionStorage.getItem("jwt"),
+                          },
+                        };
+                        fetch(
+                          api.api +
+                            `/todaybooking/BookedServices/setDone/${data.Id}`,
+                          message
+                        ).then(() => setIsUpdating(true));
+                      }}
+                    >
+                      set FINISHED
+                    </button>
+                  ) : (
+                    <button
+                      className="px-2 text-yellow-600 font-bold"
+                      onClick={() => {
+                        const message = {
+                          method: "PUT",
+                          headers: {
+                            accept: "application/json",
+                            "Content-Type": "application/json",
+                            authorization:
+                              "Bearer " + sessionStorage.getItem("jwt"),
+                          },
+                        };
+                        fetch(
+                          api.api +
+                            `/todaybooking/BookedServices/setUnDone/${data.Id}`,
+                          message
+                        ).then(() => setIsUpdating(true));
+                      }}
+                    >
+                      set UnFINISHED
+                    </button>
+                  )}
+                </div>
               </div>
             );
           })}
