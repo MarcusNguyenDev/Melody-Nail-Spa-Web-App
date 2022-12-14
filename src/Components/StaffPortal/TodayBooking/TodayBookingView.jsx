@@ -91,11 +91,22 @@ export default function TodayBookingView() {
           <div className="flex text-xl font-bold">Booking ID: {selectedId}</div>
           <div className="flex text-xl font-bold">Customer: {Customer}</div>
           <div className="flex text-xl font-bold">
-            Price: $
+            Total: $
             {bookedServices.reduce(
               (accumulator, obj) => accumulator + parseInt(obj.Price),
               0
             )}
+          </div>
+          <div className="flex text-xl font-bold">
+            Finished Total: $
+            {bookedServices
+              .filter((e) => {
+                return e.Done === "YES";
+              })
+              .reduce(
+                (accumulator, obj) => accumulator + parseInt(obj.Price),
+                0
+              )}
           </div>
           <div className="grid grid-cols-5 border bg-blue-400">
             <div className="border">Time</div>
