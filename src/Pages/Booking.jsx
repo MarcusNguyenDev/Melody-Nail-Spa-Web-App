@@ -6,7 +6,6 @@ import "react-datepicker/dist/react-datepicker.css";
 import api from "../api.json";
 
 import TimeSelection from "../Components/Booking/TimeSelection";
-import { faSmile } from "@fortawesome/free-solid-svg-icons";
 
 const time = [
   { timeId: 0, time: "9:00am - 9:45am" },

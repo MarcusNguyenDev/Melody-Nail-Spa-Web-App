@@ -5,7 +5,7 @@ import menu from "../../misc/menu.svg";
 import close from "../../misc/close.svg";
 
 import NavButton from "./NavButton";
-import SM_NavButton from "./SM_NavButton";
+import SMNavButton from "./SMNavButton";
 
 const linkDestination = {
   home: "/",
@@ -82,9 +82,9 @@ export default function Navbar() {
           sm_Toggle ? "flex-wrap" : "hidden"
         } bg-pink-50 items-center justify-center`}
       >
-        <SM_NavButton to={linkDestination.home} text="Home" />
-        <SM_NavButton to={linkDestination.services} text="Services" />
-        <SM_NavButton to={linkDestination.contact} text="Contact" />
+        <SMNavButton to={linkDestination.home} text="Home" />
+        <SMNavButton to={linkDestination.services} text="Services" />
+        <SMNavButton to={linkDestination.contact} text="Contact" />
 
         <div className="flex justify-center animate-bounce m-3">
           <Link

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function SM_NavButton(props) {
+export default function SMNavButton(props) {
   return (
     <div className="flex justify-center">
       <Link

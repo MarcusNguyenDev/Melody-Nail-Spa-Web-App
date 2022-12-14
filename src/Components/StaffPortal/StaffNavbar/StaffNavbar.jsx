@@ -25,7 +25,10 @@ export default function StaffNavbar() {
           <div className="m-5"></div>
           <StaffNavbarButton to={"./dashboard"} text="Report" />
 
-          <div className="mt-20"></div>
+          <div className="mt-16"></div>
+
+          <hr className="mx-3 border-pink-400" />
+
           <div className="w-[100%]">
             <Link
               className="flex justify-center py-1 w-[100%] hover:bg-pink-500 font-sans text-white"
@@ -38,10 +41,7 @@ export default function StaffNavbar() {
               Log Out
             </Link>
           </div>
-
-          <div>
-            <hr className="m-3 border-pink-400" />
-          </div>
+          <div className="mt-20"></div>
         </div>
       </nav>
     </div>

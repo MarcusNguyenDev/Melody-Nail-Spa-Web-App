@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import api from "../../../api.json";
 
-import ServiceTypeIndexRow from "./ServiceTypeIndexRow";
-
 export default function ServiceTypeView() {
   const navigate = useNavigate();
   const [serviceTypeList, setServiceTypeList] = useState([]);

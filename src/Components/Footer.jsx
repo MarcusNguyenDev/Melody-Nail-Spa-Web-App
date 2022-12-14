@@ -8,8 +8,6 @@ const Location = {
   lng: 152.75214695563568,
 };
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
-
 export default function Footer() {
   return (
     <footer className="relative bg-gray-300 pt-8 pb-6">
