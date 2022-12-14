@@ -9,18 +9,20 @@ export default function StaffNavbar() {
       <nav className="h-[100%] w-[150px] z-0 bg-pink-900">
         <div className="w-[100%] h-[100%] flex-col">
           <div>
-            <hr className="m-3 border-pink-400" />
+            <hr className="m-3 mb-1 border-pink-400" />
           </div>
 
           <StaffNavbarButton to={"./dashboard"} text="Dash Board" />
-          <StaffNavbarButton to={"./users"} text="Users" />
-
           <StaffNavbarButton to={"./todayServices"} text="Today Services" />
           <StaffNavbarButton to={"./TodayBooking"} text="Today Booking" />
 
+          <div className="m-5"></div>
           <StaffNavbarButton to={"./servicetype"} text="Service Types" />
-
           <StaffNavbarButton to={"./dashboard"} text="Services" />
+
+          <div className="m-5"></div>
+          <StaffNavbarButton to={"./users"} text="Users" />
+          <div className="m-5"></div>
           <StaffNavbarButton to={"./dashboard"} text="Report" />
 
           <div className="mt-20"></div>

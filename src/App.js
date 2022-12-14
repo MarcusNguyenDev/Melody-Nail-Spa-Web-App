@@ -8,7 +8,7 @@ import Login from './Pages/Login';
 import Booking from './Pages/Booking';
 
 import Footer from './Components/Footer';
-import Navbar from './Components/Navbar';
+import Navbar from './Components/Navbar/Navbar';
 
 import DashBoard from './Components/StaffPortal/Dashboard/DashBoard';
 import Users from './Components/StaffPortal/Users/Users';

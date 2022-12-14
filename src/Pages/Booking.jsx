@@ -6,6 +6,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import api from "../api.json";
 
 import TimeSelection from "../Components/Booking/TimeSelection";
+import { faSmile } from "@fortawesome/free-solid-svg-icons";
 
 const time = [
   { timeId: 0, time: "9:00am - 9:45am" },
@@ -36,6 +37,7 @@ export default function Booking() {
   const [BookingError, setBookingError] = useState(false);
   const [RaiseError, setRaiseError] = useState("");
   const [ServicesList, setServicesList] = useState([]);
+  const [Sumary, setSumary] = useState(false);
 
   const emailRef = useRef();
 
@@ -76,159 +78,189 @@ export default function Booking() {
   }, []);
 
   return (
-    <div className="flex bg-pink-200 justify-center">
-      <div className="flex-col justify-center bg-white sm:m-20 sm:mt-10 sm:mb-10 sm:rounded-[40px]">
-        <label className="flex justify-center text-[24px] font-bold text-pink-800 m-4">
-          Booking Form
-        </label>
+    <div className="flex bg-pink-300 justify-center">
+      <div className="flex-col shadow-2xl justify-center bg-white sm:m-20 sm:mt-10 sm:mb-10 sm:rounded-[40px]">
+        <div className={Sumary ? "hidden" : ""}>
+          <label className="flex justify-center text-[24px] font-bold text-pink-800 m-4">
+            Booking Form
+          </label>
 
-        <label className="flex justify-center text-[20px] font-bold text-pink-800 m-4 mb-0">
-          Email
-        </label>
+          <label className="flex justify-center text-[20px] font-bold text-pink-800 m-4 mb-0">
+            Email
+          </label>
 
-        <div className="grid grid-cols-2">
-          <div className="mt-1">
-            <label className="p-1 text-pink-800">Email:</label>
-          </div>
-          <div className="mr-2">
-            <input
-              ref={emailRef}
-              className="w-[100%] border p-1 border-pink-800 rounded-lg"
-            ></input>
-          </div>
-        </div>
-        <label className="flex justify-center text-[16px] text-pink-800 mx-8">
-          We do not store your email, we just use it once per booking for
-          sending confirmation email and cancelation link
-        </label>
-
-        <hr className="m-6 border-pink-600 mx-20" />
-
-        <label className="flex justify-center text-[20px] font-bold text-pink-800 m-4 mb-0 mt-4">
-          Date
-        </label>
-        <div className="grid grid-cols-2">
-          <div className="mt-2">
-            <label className="p-1 text-pink-800">Pick a date:</label>
-          </div>
-          <div className="mr-2 mt-1 mb-8">
-            <ReactDatePicker
-              className="w-full border p-1 border-pink-800 rounded-lg"
-              selected={SelectedDate}
-              onChange={(date) => {
-                const currentDate = new Date();
-                currentDate.setHours(0);
-                currentDate.setMinutes(0);
-                currentDate.setSeconds(1);
-
-                setSelectedDate(date);
-                if (date < currentDate) {
-                  setDateError(true);
-                  setAvailableTime([]);
-                } else {
-                  setDateError(false);
-                  fetch(
-                    api.api +
-                      `/booking/available?date=${
-                        date.getFullYear() +
-                        "-" +
-                        (date.getMonth() + 1) +
-                        "-" +
-                        date.getDate()
-                      }`
-                  )
-                    .then((res) => res.json())
-                    .then((res) => setAvailableTime(res));
-                }
-              }}
-              dateFormat="dd/M/yyyy"
-            />
-          </div>
-        </div>
-
-        {DateError ? (
-          <div className="m-[10px]">
-            <label className="text-red-600">
-              Invalid date: selected date must be in the future
-            </label>
-          </div>
-        ) : (
-          <></>
-        )}
-
-        <hr className="m-6 border-pink-600 mx-20" />
-
-        <label className="flex justify-center text-[20px] font-bold text-pink-800 m-4 mb-0">
-          Time
-        </label>
-
-        <label className="flex justify-center text-[16px] text-pink-800 mx-8">
-          If the time you want is unavailable, please select other date. Thank
-          you!
-        </label>
-        {time.map((time) => (
-          <TimeSelection
-            key={time.timeId}
-            time={time.time}
-            id={time.timeId}
-            available={AvailableTime.includes(time.timeId)}
-            selectCallback={SelectionCallback}
-            unSelectCallback={UnSelectionCallback}
-            ServiceTypes={ServiceTypes}
-            ServicesList={ServicesList}
-          />
-        ))}
-
-        <hr className="m-6 border-pink-600 mx-20" />
-        <label className="flex justify-center text-[24px] font-bold text-pink-800 m-4">
-          Sumary
-        </label>
-        <div className="grid grid-cols-3">
-          <div className="text-lg font-semibold">Service Name</div>
-          <div className="text-lg font-semibold">Time</div>
-          <div className="text-lg font-semibold">Price</div>
-        </div>
-        <hr className="my-1 border-black mx-5" />
-        {SelectedServices.map((services) => {
-          return (
-            <div key={services.ServiceName} className="grid grid-cols-3">
-              <div>{services.service.ServiceName}</div>
-              <div>{services.time}</div>
-              <div>${services.service.ServicePrice}</div>
+          <div className="grid grid-cols-2">
+            <div className="mt-1">
+              <label className="p-1 text-pink-800">Email:</label>
             </div>
-          );
-        })}
-        <div className="p-4 text-red-600 font-bold">
-          {BookingError ? RaiseError : null}
-        </div>
-        <div>
-          <button
-            className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
-            onClick={() => {
-              const date =
-                SelectedDate.getFullYear() +
-                "-" +
-                (SelectedDate.getMonth() + 1) +
-                "-" +
-                SelectedDate.getDate();
+            <div className="mr-2">
+              <input
+                ref={emailRef}
+                className="w-[100%] border p-1 border-pink-800 rounded-lg"
+              ></input>
+            </div>
+          </div>
+          <label className="flex justify-center text-[16px] text-pink-800 mx-8">
+            We do not store your email, we just use it once per booking for
+            sending confirmation email and cancelation link
+          </label>
 
-              const data = {
-                email: emailRef.current.value,
-                bookedServices: SelectedServices,
-                date: date,
-              };
-              postBooking(data).then((res) => {
-                if (res.error) {
-                  setBookingError(res.error);
-                  setRaiseError(res.message);
-                } else {
-                  navigate("../");
-                }
-              });
-            }}
-          >
-            Book
-          </button>
+          <hr className="m-6 border-pink-600 mx-20" />
+
+          <label className="flex justify-center text-[20px] font-bold text-pink-800 m-4 mb-0 mt-4">
+            Date
+          </label>
+          <div className="grid grid-cols-2">
+            <div className="mt-2">
+              <label className="p-1 text-pink-800">Pick a date:</label>
+            </div>
+            <div className="mr-2 mt-1 mb-8">
+              <ReactDatePicker
+                className="w-full border p-1 border-pink-800 rounded-lg"
+                selected={SelectedDate}
+                onChange={(date) => {
+                  const currentDate = new Date();
+                  currentDate.setHours(0);
+                  currentDate.setMinutes(0);
+                  currentDate.setSeconds(1);
+
+                  setSelectedDate(date);
+                  if (date < currentDate) {
+                    setDateError(true);
+                    setAvailableTime([]);
+                  } else {
+                    setDateError(false);
+                    fetch(
+                      api.api +
+                        `/booking/available?date=${
+                          date.getFullYear() +
+                          "-" +
+                          (date.getMonth() + 1) +
+                          "-" +
+                          date.getDate()
+                        }`
+                    )
+                      .then((res) => res.json())
+                      .then((res) => setAvailableTime(res));
+                  }
+                }}
+                dateFormat="dd/M/yyyy"
+              />
+            </div>
+          </div>
+
+          {DateError ? (
+            <div className="m-[10px]">
+              <label className="text-red-600">
+                Invalid date: selected date must be in the future
+              </label>
+            </div>
+          ) : (
+            <></>
+          )}
+
+          <hr className="m-6 border-pink-600 mx-20" />
+
+          <label className="flex justify-center text-[20px] font-bold text-pink-800 m-4 mb-0">
+            Time
+          </label>
+
+          <label className="flex justify-center text-[16px] text-pink-800 mx-8">
+            If the time you want is unavailable, please select other date. Thank
+            you!
+          </label>
+          {time.map((time) => (
+            <TimeSelection
+              key={time.timeId}
+              time={time.time}
+              id={time.timeId}
+              available={AvailableTime.includes(time.timeId)}
+              selectCallback={SelectionCallback}
+              unSelectCallback={UnSelectionCallback}
+              ServiceTypes={ServiceTypes}
+              ServicesList={ServicesList}
+            />
+          ))}
+
+          <div className="p-4 text-red-600 font-bold">
+            {BookingError ? RaiseError : null}
+          </div>
+          <div className="m-4">
+            <button
+              className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
+              onClick={() => {
+                setSumary(false);
+              }}
+            >
+              Back
+            </button>
+            <button
+              className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
+              onClick={() => {
+                setSumary(true);
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+
+        <div className={Sumary ? "" : "hidden"}>
+          <label className="flex justify-center text-[24px] font-bold text-pink-800 m-4">
+            Sumary
+          </label>
+          <div className="grid grid-cols-3">
+            <div className="text-lg font-semibold">Service Name</div>
+            <div className="text-lg font-semibold">Time</div>
+            <div className="text-lg font-semibold">Price</div>
+          </div>
+          <hr className="my-1 border-black mx-5" />
+          {SelectedServices.map((services) => {
+            return (
+              <div key={services.ServiceName} className="grid grid-cols-3">
+                <div>{services.service.ServiceName}</div>
+                <div>{services.time}</div>
+                <div>${services.service.ServicePrice}</div>
+              </div>
+            );
+          })}
+          <div>
+            <button
+              className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
+              onClick={() => {
+                setSumary(false);
+              }}
+            >
+              Back
+            </button>
+            <button
+              className="mt-20 m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
+              onClick={() => {
+                const date =
+                  SelectedDate.getFullYear() +
+                  "-" +
+                  (SelectedDate.getMonth() + 1) +
+                  "-" +
+                  SelectedDate.getDate();
+
+                const data = {
+                  email: emailRef.current.value,
+                  bookedServices: SelectedServices,
+                  date: date,
+                };
+                postBooking(data).then((res) => {
+                  if (res.error) {
+                    setBookingError(res.error);
+                    setRaiseError(res.message);
+                  } else {
+                    navigate("../");
+                  }
+                });
+              }}
+            >
+              Book
+            </button>
+          </div>
         </div>
       </div>
     </div>
