@@ -22,7 +22,7 @@ export default function Navbar() {
 
   return (
     <nav className="w-full">
-      <div className="flex bg-pink-300 items-center">
+      <div className="flex bg-pink-500 items-center">
         <div className="flex rounded-2xl">
           <Link to={linkDestination.home}>
             <img

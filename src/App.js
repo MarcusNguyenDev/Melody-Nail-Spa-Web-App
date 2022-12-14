@@ -12,11 +12,12 @@ import Navbar from './Components/Navbar';
 
 import DashBoard from './Components/StaffPortal/Dashboard/DashBoard';
 import Users from './Components/StaffPortal/Users/Users';
-import ServiceType from './Components/StaffPortal/ServicesType/ServiceType';
+
 import ServiceTypeIndex from './Components/StaffPortal/ServicesType/ServiceTypeIndex';
 import ServiceTypeCreate from './Components/StaffPortal/ServicesType/ServiceTypeCreate';
-import TodayServices from './Components/StaffPortal/TodayServices/TodayServices';
+import ServiceTypeView from './Components/StaffPortal/ServicesType/ServiceTypeView';
 
+import TodayServices from './Components/StaffPortal/TodayServices/TodayServices';
 import TodayBookingIndex from './Components/StaffPortal/TodayBooking/TodayBookingIndex';
 import TodayBookingView from './Components/StaffPortal/TodayBooking/TodayBookingView';
 
@@ -46,10 +47,11 @@ function App() {
             <Route path='/staffportal/users' element={<Users/>}>
               <Route path='/staffportal/users/create' element={<Users/>}/>
             </Route>
-            <Route path='/staffportal/servicetype' element={<ServiceType/>}>
-              <Route path='/staffportal/servicetype/' element={<ServiceTypeIndex/>}/>
-              <Route path='/staffportal/servicetype/create' element={<ServiceTypeCreate/>}/>
-            </Route>
+
+            <Route path='/staffportal/servicetype' element={<ServiceTypeIndex/>}/>
+            <Route path='/staffportal/servicetype/create' element={<ServiceTypeCreate/>}/>
+            <Route path='/staffportal/servicetype/view' element={<ServiceTypeView/>}/>
+            
           </Route>
         </Routes>
         <NotificationContainer/>

@@ -38,65 +38,52 @@ export default function Contact() {
             />
           </Map>
         </div>
-        <div className="w-full">
-          <div className="">
-            <p className="flex items-center justify-center md:justify-start mb-4">
-              98 Pine Mountain Rd Brassall Ipswich Queensland
-            </p>
-            <p className="flex items-center justify-center md:justify-start mb-4">
+        <div className="w-full shadow-xl p-4 rounded-lg">
+          <div className="flex">
+            <div className="w-5 h-5">
               <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="envelope"
-                className="w-4 mr-4"
-                role="img"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
+                width="20"
+                height="20"
+                viewBox="0 0 20 20"
               >
-                <path
-                  fill="currentColor"
-                  d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
-                ></path>
+                <path d="M2.97 1.35A1 1 0 0 1 3.73 1h8.54a1 1 0 0 1 .76.35l2.609 3.044A1.5 1.5 0 0 1 16 5.37v.255a2.375 2.375 0 0 1-4.25 1.458A2.371 2.371 0 0 1 9.875 8 2.37 2.37 0 0 1 8 7.083 2.37 2.37 0 0 1 6.125 8a2.37 2.37 0 0 1-1.875-.917A2.375 2.375 0 0 1 0 5.625V5.37a1.5 1.5 0 0 1 .361-.976l2.61-3.045zm1.78 4.275a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0 1.375 1.375 0 1 0 2.75 0V5.37a.5.5 0 0 0-.12-.325L12.27 2H3.73L1.12 5.045A.5.5 0 0 0 1 5.37v.255a1.375 1.375 0 0 0 2.75 0 .5.5 0 0 1 1 0zM1.5 8.5A.5.5 0 0 1 2 9v6h1v-5a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v5h6V9a.5.5 0 0 1 1 0v6h.5a.5.5 0 0 1 0 1H.5a.5.5 0 0 1 0-1H1V9a.5.5 0 0 1 .5-.5zM4 15h3v-5H4v5zm5-5a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v3a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-3zm3 0h-2v3h2v-3z" />
               </svg>
-              info@example.com
-            </p>
-            <p className="flex items-center justify-center md:justify-start mb-4">
+            </div>
+
+            <div className="ml-5 ">
+              98 Pine Mountain Rd Brassall Ipswich QLD 4305
+            </div>
+          </div>
+          <div className="flex my-2">
+            <div className="w-5 h-5">
               <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="phone"
-                className="w-4 mr-4"
-                role="img"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
+                width="20"
+                height="20"
+                viewBox="0 0 16 16"
               >
-                <path
-                  fill="currentColor"
-                  d="M493.4 24.6l-104-24c-11.3-2.6-22.9 3.3-27.5 13.9l-48 112c-4.2 9.8-1.4 21.3 6.9 28l60.6 49.6c-36 76.7-98.9 140.5-177.2 177.2l-49.6-60.6c-6.8-8.3-18.2-11.1-28-6.9l-112 48C3.9 366.5-2 378.1.6 389.4l24 104C27.1 504.2 36.7 512 48 512c256.1 0 464-207.5 464-464 0-11.2-7.7-20.9-18.6-23.4z"
-                ></path>
+                <path d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.568 17.568 0 0 0 4.168 6.608 17.569 17.569 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.678.678 0 0 0-.58-.122l-2.19.547a1.745 1.745 0 0 1-1.657-.459L5.482 8.062a1.745 1.745 0 0 1-.46-1.657l.548-2.19a.678.678 0 0 0-.122-.58L3.654 1.328zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.678.678 0 0 0 .178.643l2.457 2.457a.678.678 0 0 0 .644.178l2.189-.547a1.745 1.745 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.634 18.634 0 0 1-7.01-4.42 18.634 18.634 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877L1.885.511z" />
               </svg>
-              + 01 234 567 88
-            </p>
-            <p className="flex items-center justify-center md:justify-start">
+            </div>
+
+            <div className="ml-5">07 3201 5914</div>
+          </div>
+          <div className="flex my-2">
+            <div className="w-5 h-5">
               <svg
-                aria-hidden="true"
-                focusable="false"
-                data-prefix="fas"
-                data-icon="print"
-                className="w-4 mr-4"
-                role="img"
                 xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"
+                width="20"
+                height="20"
+                fill="currentColor"
+                class="bi bi-phone"
+                viewBox="0 0 16 16"
               >
-                <path
-                  fill="currentColor"
-                  d="M448 192V77.25c0-8.49-3.37-16.62-9.37-22.63L393.37 9.37c-6-6-14.14-9.37-22.63-9.37H96C78.33 0 64 14.33 64 32v160c-35.35 0-64 28.65-64 64v112c0 8.84 7.16 16 16 16h48v96c0 17.67 14.33 32 32 32h320c17.67 0 32-14.33 32-32v-96h48c8.84 0 16-7.16 16-16V256c0-35.35-28.65-64-64-64zm-64 256H128v-96h256v96zm0-224H128V64h192v48c0 8.84 7.16 16 16 16h48v96zm48 72c-13.25 0-24-10.75-24-24 0-13.26 10.75-24 24-24s24 10.74 24 24c0 13.25-10.75 24-24 24z"
-                ></path>
+                <path d="M11 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h6zM5 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H5z" />
+                <path d="M8 14a1 1 0 1 0 0-2 1 1 0 0 0 0 2z" />
               </svg>
-              + 01 234 567 89
-            </p>
+            </div>
+            <div className="ml-5">0490 545 260 (Katie)</div>
           </div>
         </div>
       </div>

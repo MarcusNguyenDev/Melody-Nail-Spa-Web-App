@@ -5,7 +5,7 @@ import api from "../../../api.json";
 
 import ServiceTypeIndexRow from "./ServiceTypeIndexRow";
 
-export default function ServiceTypeIndex() {
+export default function ServiceTypeView() {
   const navigate = useNavigate();
   const [serviceTypeList, setServiceTypeList] = useState([]);
 
@@ -29,19 +29,7 @@ export default function ServiceTypeIndex() {
         </button>
       </div>
 
-      <div className="m-3 bg-white shadow-xl rounded-xl p-3">
-        <div className="grid grid-cols-7 bg-blue-400">
-          <div className="border font-bold text-white">Id</div>
-          <div className="border font-bold text-white col-span-4">
-            Service Type
-          </div>
-          <div className="border font-bold col-span-2 text-white"></div>
-        </div>
-
-        {serviceTypeList.map((data) => (
-          <ServiceTypeIndexRow ServiceType={data} />
-        ))}
-      </div>
+      <div className="m-3 bg-white shadow-xl rounded-xl p-3"></div>
     </div>
   );
 }
