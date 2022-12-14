@@ -208,7 +208,7 @@ export default function Booking() {
           <label className="flex justify-center text-[24px] font-bold text-pink-800 m-4">
             Sumary
           </label>
-          <div className="grid grid-cols-3">
+          <div className="grid grid-cols-3 ">
             <div className="text-lg font-semibold">Service Name</div>
             <div className="text-lg font-semibold">Time</div>
             <div className="text-lg font-semibold">Price</div>
@@ -223,6 +223,23 @@ export default function Booking() {
               </div>
             );
           })}
+          <hr className="my-1 border-black mx-5" />
+          <div className="grid grid-cols-3 ">
+            <div className="text-lg font-semibold"></div>
+            <div className="flex justify-end text-lg font-semibold">Total:</div>
+            <div className="text-lg font-semibold">
+              {"$" +
+                SelectedServices.reduce(
+                  (accumulator, obj) =>
+                    accumulator + parseInt(obj.service.ServicePrice),
+                  0
+                )}
+            </div>
+          </div>
+          <label className="flex justify-center text-[16px] text-pink-800 mx-8">
+            All payment will be made inside our shop. Thank you for using our
+            services!
+          </label>
           <div>
             <button
               className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
