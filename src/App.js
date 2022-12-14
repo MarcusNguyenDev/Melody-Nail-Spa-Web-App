@@ -17,11 +17,15 @@ import ServiceTypeIndex from './Components/StaffPortal/ServicesType/ServiceTypeI
 import ServiceTypeCreate from './Components/StaffPortal/ServicesType/ServiceTypeCreate';
 import ServiceTypeView from './Components/StaffPortal/ServicesType/ServiceTypeView';
 
+import Services from './Pages/Services';
+
 import TodayServices from './Components/StaffPortal/TodayServices/TodayServices';
 import TodayBookingIndex from './Components/StaffPortal/TodayBooking/TodayBookingIndex';
 import TodayBookingView from './Components/StaffPortal/TodayBooking/TodayBookingView';
 
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
+
+
 
 
 function App() {
@@ -36,6 +40,7 @@ function App() {
           <Route exact path='/contact' element={<Contact/>}/>
           <Route exact path='/login' element={<Login/>}/>
           <Route exact path='/booking' element={<Booking/>}/>
+          <Route exact path='/services' element={<Services/>}/>
           <Route exact path='/staffportal' element={<StaffPortal/>}>
             <Route path='/staffportal/dashboard' element={<DashBoard/>}/>
             <Route path='/staffportal/todayServices' element={<TodayServices/>}/>

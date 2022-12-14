@@ -9,7 +9,7 @@ import SMNavButton from "./SMNavButton";
 
 const linkDestination = {
   home: "/",
-  services: "/",
+  services: "/services",
   about: "/",
   contact: "/contact",
   booking: "/booking",
