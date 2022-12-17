@@ -28,7 +28,7 @@ export default function ServiceTypeView() {
   }, []);
 
   return (
-    <div className="m-3 rounded">
+    <div className="m-3 w-[600px] rounded">
       <div className="flex">
         <button
           className="justify-start t-4 ml-4 p-2 bg-pink-300 rounded-2xl font-bold text-pink-800 hover:bg-pink-600"
@@ -41,8 +41,8 @@ export default function ServiceTypeView() {
       </div>
 
       <div className="m-3 bg-white shadow-xl rounded-xl p-4">
-        <div className="flex justify-start">
-          <div className="ml-4 justify-start">
+        <div className="grid grid-cols-5">
+          <div className="ml-4 justify-start col-span-1">
             <label className="flex justify-end">Id:</label>
             <hr className="m-2 mt-7" />
             <label className="flex justify-end">Name:</label>
@@ -51,12 +51,12 @@ export default function ServiceTypeView() {
             <hr className="m-2 mt-[200px]" />
             <label className="flex justify-end">Image:</label>
           </div>
-          <div className="justify-start">
+          <div className="justify-start col-span-4">
             <input
               ee={true}
               type="text"
               value={serviceType.Id}
-              className="ml-2 p-2 w-[300px] border-black border-[1px] rounded-md"
+              className="ml-2 p-2 w-full flex border-black border-[1px] rounded-md"
             />
 
             <hr className="m-2" />
@@ -65,7 +65,7 @@ export default function ServiceTypeView() {
               type="text"
               readOnly={!editable}
               value={ServiceTypeName}
-              className="ml-2 p-2 w-[300px] border-black border-[1px] rounded-md"
+              className="ml-2 p-2 w-full flex border-black border-[1px] rounded-md"
               onChange={(e) => {
                 setServiceTypeName(e.target.value);
               }}
@@ -74,7 +74,7 @@ export default function ServiceTypeView() {
             <div>
               <textarea
                 readOnly={!editable}
-                className="ml-2 p-1 resize-none w-[300px] h-[200px] border-black border-[1px] rounded-md"
+                className="ml-2 p-1 resize-none flex w-full h-[200px] border-black border-[1px] rounded-md"
                 value={ServiceTypeDescription}
                 onChange={(e) => {
                   setServiceTypeDescription(e.target.value);
@@ -85,7 +85,7 @@ export default function ServiceTypeView() {
             <input
               type="file"
               readOnly={!editable}
-              className="ml-2 p-2 w-[300px] border-black border-[1px] rounded-md"
+              className="ml-2 p-2 w-full flex border-black border-[1px] rounded-md"
               onChange={(e) => {
                 setServiceTypeImage(e.target.files);
               }}
@@ -102,6 +102,16 @@ export default function ServiceTypeView() {
           >
             Back
           </button>
+          {editable ? (
+            <button
+              className="justify-start t-4 m-4 p-2 w-[100px] bg-pink-300 rounded-2xl font-bold text-pink-800 hover:bg-pink-600"
+              onClick={() => {
+                navigate("../servicetype");
+              }}
+            >
+              Update
+            </button>
+          ) : null}
         </div>
       </div>
     </div>

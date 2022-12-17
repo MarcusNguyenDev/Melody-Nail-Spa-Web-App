@@ -39,7 +39,7 @@ export default function ServiceTypeIndex() {
         </div>
 
         {serviceTypeList.map((data) => (
-          <ServiceTypeIndexRow ServiceType={data} />
+          <ServiceTypeIndexRow key={data.Id} ServiceType={data} />
         ))}
       </div>
     </div>

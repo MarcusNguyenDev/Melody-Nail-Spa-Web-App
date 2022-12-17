@@ -2,8 +2,10 @@
   "ExpandedNodes": [
     "",
     "\\src",
-    "\\src\\Components"
+    "\\src\\Components",
+    "\\src\\Components\\StaffPortal",
+    "\\src\\Components\\StaffPortal\\ServicesType"
   ],
-  "SelectedNode": "\\src\\Components\\Navbar.jsx",
+  "SelectedNode": "\\src\\Components\\StaffPortal\\ServicesType\\ServiceTypeCreate.jsx",
   "PreviewInSolutionExplorer": false
 }

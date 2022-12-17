@@ -6,6 +6,8 @@ module.exports = {
     extend: {
       fontFamily: {
         'Dancing-Script': ['Dancing Script',"cursive"],
+        'Bilbo':['Bilbo', 'cursive'],
+        'Farsan':['Farsan', 'cursive']
       },
     },
   },
