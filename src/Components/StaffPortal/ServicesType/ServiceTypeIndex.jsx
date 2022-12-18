@@ -8,13 +8,17 @@ import ServiceTypeIndexRow from "./ServiceTypeIndexRow";
 export default function ServiceTypeIndex() {
   const navigate = useNavigate();
   const [serviceTypeList, setServiceTypeList] = useState([]);
+  const [loading,setLoading]=useState(true);
 
+  const loadingCallback = ()=>{
+    setLoading(true);
+  }
   useEffect(() => {
     fetch(api.api + "/servicetypes")
       .then((res) => res.json())
-      .then((data) => setServiceTypeList(data))
+      .then((data) => setServiceTypeList(data)).then(()=>setLoading(false))
       .catch((err) => console.log(err));
-  }, []);
+  }, [loading]);
 
   return (
     <div className="m-3 rounded">
@@ -39,7 +43,7 @@ export default function ServiceTypeIndex() {
         </div>
 
         {serviceTypeList.map((data) => (
-          <ServiceTypeIndexRow key={data.Id} ServiceType={data} />
+          <ServiceTypeIndexRow key={data.Id} ServiceType={data} loadingCallBack={loadingCallback}/>
         ))}
       </div>
     </div>

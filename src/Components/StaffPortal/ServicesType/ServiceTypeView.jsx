@@ -22,7 +22,7 @@ export default function ServiceTypeView() {
         setServiceType(data);
         setServiceTypeName(data.ServiceTypeName);
         setServiceTypeDescription(data.ServiceTypeDescription);
-        setServiceTypeImage(data.ServiceTypeImage);
+        setServiceTypeImage(api.api+"/images/"+data.ServiceTypeImage);
       })
       .catch((err) => console.log(err));
   }, []);

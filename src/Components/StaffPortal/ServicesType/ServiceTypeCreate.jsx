@@ -85,11 +85,12 @@ export default function ServiceTypeCreate() {
                 },
                 body: formData,
               };
-              console.log(formData);
               fetch(api.api + "/servicetypes/post", message)
                 .then((res) => res.json())
-                .then((res) => console.log(res));
+                .then((res) => window.alert(res.message));
+                navigate("../servicetype");
             }}
+            
           >
             Save
           </button>

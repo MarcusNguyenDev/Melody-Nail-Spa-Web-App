@@ -1,5 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import api from "../../../api.json"
 
 export default function ServiceTypeIndexRow(props) {
   const navigate = useNavigate();
@@ -18,8 +19,26 @@ export default function ServiceTypeIndexRow(props) {
         >
           View
         </button>
-        <button className="font-semibold mx-1 text-yellow-700">Edit</button>
-        <button className="font-semibold mx-1 text-red-600">Delete</button>
+        <button className="font-semibold mx-1 text-red-600"
+        onClick={()=>{
+          const req = {
+            method: "PUT",
+            headers: {
+              accept: "application/json",
+              "Content-Type": "application/json",
+              authorization: "Bearer " + sessionStorage.getItem("jwt"),
+            },
+          };
+          const confirmation = window.confirm("confirmation for deleting");
+          if (confirmation){
+            
+            fetch(api.api+"/servicetypes/delete/"+props.ServiceType.Id,req).then(res=>res.json())
+            .then(data=>{
+              window.alert(data.message)
+              props.loadingCallBack();
+            });
+          }
+        }}>Delete</button>
       </div>
     </div>
   );

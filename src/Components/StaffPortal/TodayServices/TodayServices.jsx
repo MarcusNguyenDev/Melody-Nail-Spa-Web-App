@@ -16,7 +16,7 @@ const time = [
   { timeId: 3, time: "10:30am - 11:00am" },
   { timeId: 4, time: "11:00am - 11:30am" },
   { timeId: 5, time: "11:30am - 12:00pm" },
-  { timeId: 6, time: "12:00pm - 12:30pm" },
+  { timeId: 6, time: "12:00pm - 12: " },
   { timeId: 7, time: "12:30pm - 1:00pm" },
   { timeId: 8, time: "1:00pm - 1:30pm" },
   { timeId: 9, time: "1:30pm - 2:00pm" },
