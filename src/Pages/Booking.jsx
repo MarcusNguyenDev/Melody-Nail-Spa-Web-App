@@ -8,19 +8,26 @@ import api from "../api.json";
 import TimeSelection from "../Components/Booking/TimeSelection";
 
 const time = [
-  { timeId: 0, time: "9:00am - 9:45am" },
-  { timeId: 1, time: "9:45am - 10:30am" },
-  { timeId: 2, time: "10:30am - 11:15am" },
-  { timeId: 3, time: "11:15am - 12:00pm" },
-  { timeId: 4, time: "12:00pm - 12:45pm" },
-  { timeId: 5, time: "12:45pm - 1:30pm" },
-  { timeId: 6, time: "1:30pm - 2:15pm" },
-  { timeId: 7, time: "2:15pm - 3:00pm" },
-  { timeId: 8, time: "3:00pm - 3:45pm" },
-  { timeId: 9, time: "3:45pm - 4:30pm" },
-  { timeId: 10, time: "4:30pm - 5:15pm" },
-  { timeId: 11, time: "5:15pm - 6:00pm" },
-  { timeId: 12, time: "6:00pm - 6:45pm" },
+  { timeId: 0, time: "9:00am - 9:30am" },
+  { timeId: 1, time: "9:30am - 10:00am" },
+  { timeId: 2, time: "10:00am - 10:30am" },
+  { timeId: 3, time: "10:30am - 11:00am" },
+  { timeId: 4, time: "11:00am - 11:30am" },
+  { timeId: 5, time: "11:30am - 12:00pm" },
+  { timeId: 6, time: "12:00pm - 12:30pm" },
+  { timeId: 7, time: "12:30pm - 1:00pm" },
+  { timeId: 8, time: "1:00pm - 1:30pm" },
+  { timeId: 9, time: "1:30pm - 2:00pm" },
+  { timeId: 10, time: "2:00pm - 2:30pm" },
+  { timeId: 11, time: "2:30pm - 3:00pm" },
+  { timeId: 12, time: "3:00pm - 3:30pm"},
+  { timeId: 13, time: "3:30pm - 4:00pm"},
+  { timeId: 14, time: "4:00pm - 4:30pm"},
+  { timeId: 15, time: "4:30pm - 5:00pm"},
+  { timeId: 16, time: "5:00pm - 5:30pm"},
+  { timeId: 17, time: "5:30pm - 6:00pm"},
+  { timeId: 18, time: "6:00pm - 6:30pm"},
+  { timeId: 19, time: "6:30pm - 7:00pm"},
 ];
 //Constant unchange for reference only
 const today = new Date();
@@ -197,6 +204,7 @@ export default function Booking() {
               className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
               onClick={() => {
                 setSumary(true);
+                window.scroll(0,0);
               }}
             >
               Next
