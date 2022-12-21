@@ -18,7 +18,7 @@ export default function StaffNavbar() {
 
           <div className="m-5"></div>
           <StaffNavbarButton to={"./servicetype"} text="Service Types" />
-          <StaffNavbarButton to={"./dashboard"} text="Services" />
+          <StaffNavbarButton to={"./services"} text="Services" />
 
           <div className="m-5"></div>
           <StaffNavbarButton to={"./users"} text="Users" />

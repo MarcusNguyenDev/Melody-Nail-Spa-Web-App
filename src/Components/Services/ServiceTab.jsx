@@ -1,14 +1,16 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import dummyimg from "../../images/img1.jpg";
-import api from "../../api.json"
-import { data } from "autoprefixer";
+import api from "../../api.json";
 
 export default function ServiceTab(props) {
   return (
     <div className="flex justify-center mb-4">
       <div className=" w-[350px] flex-col h-[600px] bg-white shadow-2xl">
-        <img src={api.api+"/images/"+props.data.ServiceTypeImage} alt="" className="w-full h-[200px]" />
+        <img
+          src={api.api + "/images/" + props.data.ServiceTypeImage}
+          alt="test"
+          className="w-full h-[200px]"
+        />
         <div className="m-4 h-[320px]">
           <div className="flex font-Bilbo text-[40px] font-extrabold text-pink-700">
             {props.data.ServiceTypeName}
