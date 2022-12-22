@@ -31,7 +31,7 @@ import NotificationContainer from "react-notifications/lib/NotificationContainer
 
 function App() {
   return (
-    <div className="App">
+    <div className="App min-h-screen">
       <BrowserRouter>
         <Navbar />
         <Routes>
@@ -80,7 +80,7 @@ function App() {
             />
             <Route
               path="/staffportal/services/view"
-              element={<ServiceTypeView />}
+              element={<ServicesView />}
             />
           </Route>
         </Routes>

@@ -8,7 +8,7 @@ export default function ServiceTab(props) {
       <div className=" w-[350px] flex-col h-[600px] bg-white shadow-2xl">
         <img
           src={api.api + "/images/" + props.data.ServiceTypeImage}
-          alt="test"
+          alt={props.data.ServiceTypeName + " Image"}
           className="w-full h-[200px]"
         />
         <div className="m-4 h-[320px]">
