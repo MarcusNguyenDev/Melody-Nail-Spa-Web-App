@@ -15,6 +15,7 @@ export default function StaffNavbar() {
           <StaffNavbarButton to={"./dashboard"} text="Dash Board" />
           <StaffNavbarButton to={"./todayServices"} text="Today Services" />
           <StaffNavbarButton to={"./TodayBooking"} text="Today Booking" />
+          <StaffNavbarButton to={"./AllBooking"} text="All Booking" />
 
           <div className="m-5"></div>
           <StaffNavbarButton to={"./servicetype"} text="Service Types" />

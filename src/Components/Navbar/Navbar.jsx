@@ -40,7 +40,7 @@ export default function Navbar() {
             </div>
 
             <div className="flex ml-5 sm:text-4xl text-2xl col-span-4 font-semibold text-white sm:mt-7 mt-4 font-Dancing-Script">
-              Melody Nails & Spa Salon
+              Melody Nails & Spa
             </div>
           </div>
 
