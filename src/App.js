@@ -33,66 +33,68 @@ import AllBookingIndex from "./Components/StaffPortal/AllBooking/AllBookingIndex
 
 function App() {
   return (
-    <div className="App min-h-screen">
+    <div className="App ">
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route exact path="" element={<Home />} />
-          <Route exact path="/contact" element={<Contact />} />
-          <Route exact path="/login" element={<Login />} />
-          <Route exact path="/booking" element={<Booking />} />
-          <Route exact path="/services" element={<Services />} />
-          <Route exact path="/staffportal" element={<StaffPortal />}>
-            <Route path="/staffportal/dashboard" element={<DashBoard />} />
-            <Route
-              path="/staffportal/todayServices"
-              element={<TodayServices />}
-            />
+        <main className="">
+          <Routes>
+            <Route exact path="" element={<Home />} />
+            <Route exact path="/contact" element={<Contact />} />
+            <Route exact path="/login" element={<Login />} />
+            <Route exact path="/booking" element={<Booking />} />
+            <Route exact path="/services" element={<Services />} />
+            <Route exact path="/staffportal" element={<StaffPortal />}>
+              <Route path="/staffportal/dashboard" element={<DashBoard />} />
+              <Route
+                path="/staffportal/todayServices"
+                element={<TodayServices />}
+              />
 
-            <Route
-              path="/staffportal/TodayBooking"
-              element={<TodayBookingIndex />}
-            />
+              <Route
+                path="/staffportal/TodayBooking"
+                element={<TodayBookingIndex />}
+              />
 
-            <Route
-              path="/staffportal/AllBooking"
-              element={<AllBookingIndex />}
-            />
+              <Route
+                path="/staffportal/AllBooking"
+                element={<AllBookingIndex />}
+              />
 
-            <Route
-              path="/staffportal/TodayBooking/view"
-              element={<TodayBookingView />}
-            />
+              <Route
+                path="/staffportal/TodayBooking/view"
+                element={<TodayBookingView />}
+              />
 
-            <Route path="/staffportal/users" element={<Users />}>
-              <Route path="/staffportal/users/create" element={<Users />} />
+              <Route path="/staffportal/users" element={<Users />}>
+                <Route path="/staffportal/users/create" element={<Users />} />
+              </Route>
+
+              <Route
+                path="/staffportal/servicetype"
+                element={<ServiceTypeIndex />}
+              />
+              <Route
+                path="/staffportal/servicetype/create"
+                element={<ServiceTypeCreate />}
+              />
+              <Route
+                path="/staffportal/servicetype/view"
+                element={<ServiceTypeView />}
+              />
+
+              <Route path="/staffportal/services" element={<ServicesIndex />} />
+              <Route
+                path="/staffportal/services/create"
+                element={<ServicesCreate />}
+              />
+              <Route
+                path="/staffportal/services/view"
+                element={<ServicesView />}
+              />
             </Route>
-
-            <Route
-              path="/staffportal/servicetype"
-              element={<ServiceTypeIndex />}
-            />
-            <Route
-              path="/staffportal/servicetype/create"
-              element={<ServiceTypeCreate />}
-            />
-            <Route
-              path="/staffportal/servicetype/view"
-              element={<ServiceTypeView />}
-            />
-
-            <Route path="/staffportal/services" element={<ServicesIndex />} />
-            <Route
-              path="/staffportal/services/create"
-              element={<ServicesCreate />}
-            />
-            <Route
-              path="/staffportal/services/view"
-              element={<ServicesView />}
-            />
-          </Route>
-        </Routes>
-        <NotificationContainer />
+          </Routes>
+          <NotificationContainer />
+        </main>
         <Footer />
       </BrowserRouter>
     </div>

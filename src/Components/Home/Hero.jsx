@@ -1,5 +1,5 @@
 import React from "react";
-import img1 from "../../images/img1.jpg";
+import heroImg from "../../images/img1.jpg";
 
 export default function Hero() {
   return (
@@ -24,7 +24,7 @@ export default function Hero() {
           <img
             className="object-cover object-center rounded-3xl"
             alt="hero"
-            src={img1}
+            src={heroImg}
           />
         </div>
       </div>
