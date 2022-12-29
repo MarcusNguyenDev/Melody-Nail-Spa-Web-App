@@ -29,8 +29,6 @@ import ServicesCreate from "./Components/StaffPortal/Services/ServicesCreate";
 
 import NotificationContainer from "react-notifications/lib/NotificationContainer";
 
-import AllBookingIndex from "./Components/StaffPortal/AllBooking/AllBookingIndex";
-
 function App() {
   return (
     <div className="App ">
@@ -53,11 +51,6 @@ function App() {
               <Route
                 path="/staffportal/TodayBooking"
                 element={<TodayBookingIndex />}
-              />
-
-              <Route
-                path="/staffportal/AllBooking"
-                element={<AllBookingIndex />}
               />
 
               <Route

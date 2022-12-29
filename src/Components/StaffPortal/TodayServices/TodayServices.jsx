@@ -79,9 +79,11 @@ export default function TodayBooking() {
       fetch(api.api + "/todaybooking/BookedServices", message).then((res) =>
         res.json()
       ),
-      fetch(api.api + "/todaybooking/BookingList", message).then((res) =>
-        res.json()
-      ),
+      fetch(
+        api.api +
+          `/todaybooking/BookingList?date=${yyyy + "/" + mm + "/" + dd}`,
+        message
+      ).then((res) => res.json()),
     ])
       .then(([servicesList, todayBooking, BookingList]) =>
         todayBooking.map((services) => ({

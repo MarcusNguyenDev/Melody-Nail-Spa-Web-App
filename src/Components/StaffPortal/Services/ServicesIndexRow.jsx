@@ -11,7 +11,7 @@ export default function ServicesIndexRow(props) {
       <div className="col-span-2 border">{props.service.ServiceType}</div>
       <div className="col-span-2 border">${props.service.ServicePrice}</div>
       <div className="col-span-2 border">
-        <button>
+        <div>
           <button
             className="font-semibold mx-1 text-emerald-600"
             onClick={() => {
@@ -43,7 +43,7 @@ export default function ServicesIndexRow(props) {
           >
             Delete
           </button>
-        </button>
+        </div>
       </div>
     </div>
   );
