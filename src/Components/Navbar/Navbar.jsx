@@ -25,7 +25,7 @@ export default function Navbar() {
   }, []);
 
   return (
-    <nav className="">
+    <nav className="sticky top-0 z-50">
       <div className="flex-col bg-pink-500 items-center">
         <span className="grid grid-cols-4 rounded-2xl">
           <div className="flex col-span-3">
@@ -70,7 +70,7 @@ export default function Navbar() {
           </div>
         </span>
 
-        <div className="sm:flex hidden justify-start items-center bg-pink-200">
+        <div className="sm:flex hidden justify-center items-center bg-pink-200">
           <NavButton to={linkDestination.home} text="Home" />
           <NavButton to={linkDestination.services} text="Services" />
           <NavButton to={linkDestination.contact} text="Contact" />
@@ -87,10 +87,10 @@ export default function Navbar() {
         <SMNavButton to={linkDestination.services} text="Services" />
         <SMNavButton to={linkDestination.contact} text="Contact" />
 
-        <div className="flex justify-center m-3">
+        <div className="flex justify-center">
           <Link
             to={linkDestination.booking}
-            className="flex w-[100%] p-3 justify-center rounded-xl  bg-pink-700 hover:bg-pink-400 text-white duration-300 font-bold"
+            className="flex w-[100%] justify-center p-3 bg-pink-600 hover:bg-pink-400 text-white duration-300 font-bold"
           >
             Book Now
           </Link>

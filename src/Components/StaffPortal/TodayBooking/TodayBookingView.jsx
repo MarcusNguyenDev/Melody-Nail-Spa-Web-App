@@ -57,8 +57,8 @@ export default function TodayBookingView() {
         api.api + `/todaybooking/BookedServices/${selectedId}`,
         message
       ).then((res) => res.json()),
-      fetch(api.api + "/todaybooking/BookingList", message).then((res) =>
-        res.json()
+      fetch(api.api + `/todaybooking/BookingList/${selectedId}`, message).then(
+        (res) => res.json()
       ),
     ])
       .then(([servicesList, bookedServices, BookingList]) =>

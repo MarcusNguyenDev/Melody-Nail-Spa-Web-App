@@ -59,27 +59,29 @@ export default function TodayBookingIndex() {
       <div className="bg-white m-4 p-4 rounded-xl shadow-2xl">
         <div className="font-bold text-2xl">Today Bookings</div>
 
-        <div className="flex m-2">
-          <label className=" flex w-[100px]">Search:</label>
-          <input
-            className="border shadow-lg"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
-          />
-        </div>
+        <div className="flex-col">
+          <div className="flex m-2">
+            <label className="w-[100px]">Search:</label>
+            <input
+              className="border shadow-lg"
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+            />
+          </div>
 
-        <div className="flex m-2">
-          <label className="flex w-[116px]">Pick a date:</label>
-          <ReactDatePicker
-            className="border shadow-lg flex"
-            selected={SelectedDate}
-            dateFormat="dd/M/yyyy"
-            onChange={(date) => {
-              setSelectedDate(date);
-            }}
-          />
+          <div className="flex m-2">
+            <label className="flex w-[100px]">Pick a date:</label>
+            <ReactDatePicker
+              className="border shadow-lg flex"
+              selected={SelectedDate}
+              dateFormat="dd/M/yyyy"
+              onChange={(date) => {
+                setSelectedDate(date);
+              }}
+            />
+          </div>
         </div>
 
         <div className="flex">

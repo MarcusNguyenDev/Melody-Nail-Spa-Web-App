@@ -5,8 +5,8 @@ import StaffNavbarButton from "./StaffNavbarButton";
 
 export default function StaffNavbar() {
   return (
-    <div className="flex h-[100%]">
-      <nav className="h-[100%] w-[150px] z-0 bg-pink-900">
+    <div className="flex ">
+      <nav className="h-[100%] w-[150px] z-0 bg-pink-900 min-h-[90vh]">
         <div className="w-[100%] h-[100%] flex-col">
           <div>
             <hr className="m-3 mb-1 border-pink-400" />
