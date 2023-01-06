@@ -18,7 +18,7 @@ export default function About() {
                 We are professional nails stylist
               </h1>
               <p className="mb-8 backdrop-blur-sm leading-relaxed text-lg sm:text-2xl  rounded-lg text-pink-900 md:mx-[100px] sm:mx-[100px]">
-                Located in Brassail Ipswich, Melody Nail & Spa is one of the
+                Located in Brassall Ipswich, Melody Nail & Spa is one of the
                 best salon in the area. We pride ourselves on our services. At
                 Melody Nails & Spa, you can enjoy our vast variety professional
                 services at affordable prices while keeping the best quality.
@@ -30,7 +30,7 @@ export default function About() {
           <div className="mt-16">
             <Link
               className="font-bold text-[18px] px-10 py-3 bg-pink-600 text-white hover:bg-pink-500"
-              to={"./services"}
+              to={"./about"}
             >
               Learn more
             </Link>

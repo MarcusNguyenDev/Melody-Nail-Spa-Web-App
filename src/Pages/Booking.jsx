@@ -20,14 +20,14 @@ const time = [
   { timeId: 9, time: "1:30pm - 2:00pm" },
   { timeId: 10, time: "2:00pm - 2:30pm" },
   { timeId: 11, time: "2:30pm - 3:00pm" },
-  { timeId: 12, time: "3:00pm - 3:30pm"},
-  { timeId: 13, time: "3:30pm - 4:00pm"},
-  { timeId: 14, time: "4:00pm - 4:30pm"},
-  { timeId: 15, time: "4:30pm - 5:00pm"},
-  { timeId: 16, time: "5:00pm - 5:30pm"},
-  { timeId: 17, time: "5:30pm - 6:00pm"},
-  { timeId: 18, time: "6:00pm - 6:30pm"},
-  { timeId: 19, time: "6:30pm - 7:00pm"},
+  { timeId: 12, time: "3:00pm - 3:30pm" },
+  { timeId: 13, time: "3:30pm - 4:00pm" },
+  { timeId: 14, time: "4:00pm - 4:30pm" },
+  { timeId: 15, time: "4:30pm - 5:00pm" },
+  { timeId: 16, time: "5:00pm - 5:30pm" },
+  { timeId: 17, time: "5:30pm - 6:00pm" },
+  { timeId: 18, time: "6:00pm - 6:30pm" },
+  { timeId: 19, time: "6:30pm - 7:00pm" },
 ];
 //Constant unchange for reference only
 const today = new Date();
@@ -59,6 +59,8 @@ export default function Booking() {
     setSelectedService(arr);
   };
   useEffect(() => {
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
     fetch(api.api + "/servicetypes")
       .then((res) => res.json())
       .then((res) => {
@@ -204,7 +206,7 @@ export default function Booking() {
               className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"
               onClick={() => {
                 setSumary(true);
-                window.scroll(0,0);
+                window.scroll(0, 0);
               }}
             >
               Next

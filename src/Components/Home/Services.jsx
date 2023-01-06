@@ -27,7 +27,7 @@ export default function Services() {
                 <img
                   src="https://dummyimage.com/1900x1900"
                   alt={servicetype.ServiceTypeName + " Image"}
-                  className="w-[150px] h-[150px] rounded-full border-pink-700 border mt-2 sm:mt-0"
+                  className="w-[200px] h-[200px] rounded-full border-pink-700 border mt-2 sm:mt-0"
                 />
               </div>
               <div className="flex justify-center text-pink-700 text-[22px]">

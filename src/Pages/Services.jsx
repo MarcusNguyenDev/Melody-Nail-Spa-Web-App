@@ -7,6 +7,8 @@ export default function Services() {
   const [services, setServices] = useState([]);
 
   useEffect(() => {
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
     Promise.all([
       fetch(api.api + "/servicetypes").then((res) => res.json()),
       fetch(api.api + "/services").then((res) => res.json()),

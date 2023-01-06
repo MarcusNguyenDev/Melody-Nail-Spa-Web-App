@@ -10,14 +10,17 @@ import SMNavButton from "./SMNavButton";
 const linkDestination = {
   home: "/",
   services: "/services",
-  about: "/",
   contact: "/contact",
   booking: "/booking",
   staffPortal: "/StaffPortal",
+  about: "/about",
 };
 
 export default function Navbar() {
   const [sm_Toggle, set_Toggle] = useState(false);
+
+  const closeCallback = () => set_Toggle(false);
+
   useEffect(() => {
     window.addEventListener("resize", () => {
       set_Toggle(false);
@@ -71,10 +74,11 @@ export default function Navbar() {
         </span>
 
         <div className="sm:flex hidden justify-center items-center bg-pink-200">
-          <NavButton to={linkDestination.home} text="Home" />
-          <NavButton to={linkDestination.services} text="Services" />
-          <NavButton to={linkDestination.contact} text="Contact" />
-          <NavButton to={linkDestination.staffPortal} text="Staff Portal" />
+          <NavButton to={linkDestination.home} text="HOME" />
+          <NavButton to={linkDestination.about} text="ABOUT US" />
+          <NavButton to={linkDestination.services} text="SERVICES" />
+          <NavButton to={linkDestination.contact} text="CONTACT" />
+          <NavButton to={linkDestination.staffPortal} text="STAFF PORTAL" />
         </div>
       </div>
 
@@ -83,9 +87,26 @@ export default function Navbar() {
           sm_Toggle ? "flex-wrap" : "hidden"
         } bg-pink-50 items-center justify-center`}
       >
-        <SMNavButton to={linkDestination.home} text="Home" />
-        <SMNavButton to={linkDestination.services} text="Services" />
-        <SMNavButton to={linkDestination.contact} text="Contact" />
+        <SMNavButton
+          closeCallback={closeCallback}
+          to={linkDestination.home}
+          text="HOME"
+        />
+        <SMNavButton
+          closeCallback={closeCallback}
+          to={linkDestination.about}
+          text="ABOUT US"
+        />
+        <SMNavButton
+          closeCallback={closeCallback}
+          to={linkDestination.services}
+          text="SERVICES"
+        />
+        <SMNavButton
+          closeCallback={closeCallback}
+          to={linkDestination.contact}
+          text="CONTACT"
+        />
 
         <div className="flex justify-center">
           <Link

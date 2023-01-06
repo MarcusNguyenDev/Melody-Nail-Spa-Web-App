@@ -35,6 +35,7 @@ const time = [
 export default function TodayBooking() {
   const [todayServices, setTodayServices] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [timeQuery, setTimeQuery] = useState("");
 
   const setFinishedCallBack = (id) => {
     const message = {
@@ -145,24 +146,60 @@ export default function TodayBooking() {
           </div>
         </div>
       </div>
+      <div className="flex text-pink-700 mx-4 text-lg">
+        <div className="font-bold">Find by time:</div>
+        <select
+          className="mx-4 p-1 text-black bg-white border"
+          onChange={(e) => setTimeQuery(e.target.value)}
+        >
+          <option value={""}>No selection</option>
+          {time.map((time) => (
+            <option key={time.timeId} value={time.timeId}>
+              {time.time}
+            </option>
+          ))}
+        </select>
+      </div>
       <div className=" bg-white m-4 rounded-lg">
-        <div>
-          {time.map((time) => {
-            return (
-              <div key={time.timeId}>
-                <TimeFrame
-                  time={time.time}
-                  services={todayServices.filter((e) => {
-                    return e.Time === time.timeId;
-                  })}
-                  setFinished={setFinishedCallBack}
-                  setUnFinished={setUnFinishedCallBack}
-                />
-                <hr className=" border-pink-600 border-[2px] m-6" />
-              </div>
-            );
-          })}
-        </div>
+        {timeQuery === "" ? (
+          <div>
+            {time.map((time) => {
+              return (
+                <div key={time.timeId}>
+                  <TimeFrame
+                    time={time.time}
+                    services={todayServices.filter((e) => {
+                      return e.Time === time.timeId;
+                    })}
+                    setFinished={setFinishedCallBack}
+                    setUnFinished={setUnFinishedCallBack}
+                  />
+                  <hr className=" border-pink-600 border-[2px] m-6" />
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div>
+            {time
+              .filter((e) => e.timeId === parseInt(timeQuery))
+              .map((time) => {
+                return (
+                  <div key={time.timeId}>
+                    <TimeFrame
+                      time={time.time}
+                      services={todayServices.filter((e) => {
+                        return e.Time === time.timeId;
+                      })}
+                      setFinished={setFinishedCallBack}
+                      setUnFinished={setUnFinishedCallBack}
+                    />
+                    <hr className=" border-pink-600 border-[2px] m-6" />
+                  </div>
+                );
+              })}
+          </div>
+        )}
       </div>
     </div>
   );

@@ -10,6 +10,8 @@ export default function StaffPortal() {
   const [authorize, setAuthorize] = useState(false);
 
   useEffect(() => {
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
+
     const message = {
       method: "GET",
       headers: {
@@ -41,10 +43,10 @@ export default function StaffPortal() {
     return (
       <div>
         <div className="flex">
-          <div>
+          <div className="m-0 p-0 bg-pink-900">
             <StaffNavbar />
           </div>
-          <div className="w-[100%] bg-pink-100 justify-center">
+          <div className="w-[100%] bg-pink-50 justify-center">
             <Outlet />
           </div>
         </div>

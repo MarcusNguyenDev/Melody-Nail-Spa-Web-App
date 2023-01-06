@@ -1,5 +1,5 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { NotificationManager } from "react-notifications";
 import "react-notifications/lib/notifications.css";
@@ -9,6 +9,11 @@ export default function Login() {
   const [userName, setUserName] = useState("");
   const [password, setPassWord] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
+
   return (
     <div className="bg-pink-200 flex justify-center">
       <div className="bg-pink-300 m-[40px] p-[40px] pt-5 pb-5 rounded-3xl flex-col">

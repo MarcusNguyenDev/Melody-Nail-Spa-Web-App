@@ -1,5 +1,6 @@
 import React from "react";
 import { Map, Marker } from "pigeon-maps";
+import { useEffect } from "react";
 
 const Location = {
   lat: -27.589416439686605,
@@ -7,6 +8,9 @@ const Location = {
 };
 
 export default function Contact() {
+  useEffect(() => {
+    document.documentElement.scrollTo({ top: 0, left: 0, behavior: "instant" });
+  }, []);
   return (
     <div>
       <div className="flex justify-center">
@@ -55,6 +59,7 @@ export default function Contact() {
               98 Pine Mountain Rd Brassall Ipswich QLD 4305
             </div>
           </div>
+
           <div className="flex my-2">
             <div className="w-5 h-5">
               <svg
@@ -69,6 +74,7 @@ export default function Contact() {
 
             <div className="ml-5">07 3201 5914</div>
           </div>
+
           <div className="flex my-2">
             <div className="w-5 h-5">
               <svg
@@ -84,6 +90,55 @@ export default function Contact() {
               </svg>
             </div>
             <div className="ml-5">0490 545 260 (Katie)</div>
+          </div>
+
+          <div className="">
+            <div className="flex text-red-600 font-bold">OPENING HOUR</div>
+            <div className="flex">
+              <div className="flex-col pr-3">
+                <div className="flex border-b-2">
+                  <div className="flex w-[95px]">Monday</div>
+
+                  <div className="flex">9:00am - 5:30pm</div>
+                </div>
+
+                <div className="flex border-b-2">
+                  <div className="flex w-[95px]">Tuesday</div>
+
+                  <div className="flex">9:00am - 5:30pm</div>
+                </div>
+
+                <div className="flex border-b-2">
+                  <div className="flex w-[95px]">Wednesday</div>
+
+                  <div className="flex">9:00am - 5:30pm</div>
+                </div>
+
+                <div className="flex border-b-2">
+                  <div className="flex w-[95px]">Thursday</div>
+
+                  <div className="flex">9:00am - 7:00pm</div>
+                </div>
+
+                <div className="flex border-b-2">
+                  <div className="flex w-[95px]">Friday</div>
+
+                  <div className="flex">9:00am - 5:30pm</div>
+                </div>
+
+                <div className="flex border-b-2">
+                  <div className="flex w-[95px]">Saturday</div>
+
+                  <div className="flex">9:00am - 5:30pm</div>
+                </div>
+
+                <div className="flex border-b-2">
+                  <div className="flex w-[95px]">Sunday</div>
+
+                  <div className="flex">9:00am - 5:30pm</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

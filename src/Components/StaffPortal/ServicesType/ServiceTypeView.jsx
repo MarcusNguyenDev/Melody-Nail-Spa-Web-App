@@ -102,6 +102,7 @@ export default function ServiceTypeView() {
                     ? ServiceTypeImage
                     : URL.createObjectURL(ServiceTypeImage)
                 }
+                alt="img"
               />
             )}
           </div>

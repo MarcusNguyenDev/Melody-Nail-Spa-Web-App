@@ -55,7 +55,7 @@ export default function ServiceTypeCreate() {
             {ServiceTypeImage === undefined ? (
               "No img selected"
             ) : (
-              <img src={URL.createObjectURL(ServiceTypeImage)} />
+              <img src={URL.createObjectURL(ServiceTypeImage)} alt="img" />
             )}
           </form>
         </div>
@@ -88,9 +88,8 @@ export default function ServiceTypeCreate() {
               fetch(api.api + "/servicetypes/post", message)
                 .then((res) => res.json())
                 .then((res) => window.alert(res.message));
-                navigate("../servicetype");
+              navigate("../servicetype");
             }}
-            
           >
             Save
           </button>

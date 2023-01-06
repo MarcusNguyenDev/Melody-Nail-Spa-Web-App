@@ -6,6 +6,7 @@ import Contact from "./Pages/Contact";
 import StaffPortal from "./Pages/StaffPortal";
 import Login from "./Pages/Login";
 import Booking from "./Pages/Booking";
+import About from "./Pages/About";
 
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar/Navbar";
@@ -34,15 +35,16 @@ function App() {
     <div className="App ">
       <BrowserRouter>
         <Navbar />
-        <main className="">
+        <main className="min-h-[50vh]">
           <Routes>
             <Route exact path="" element={<Home />} />
             <Route exact path="/contact" element={<Contact />} />
+            <Route exact path="/about" element={<About />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/booking" element={<Booking />} />
             <Route exact path="/services" element={<Services />} />
             <Route exact path="/staffportal" element={<StaffPortal />}>
-              <Route path="/staffportal/dashboard" element={<DashBoard />} />
+              <Route path="/staffportal/" element={<DashBoard />} />
               <Route
                 path="/staffportal/todayServices"
                 element={<TodayServices />}

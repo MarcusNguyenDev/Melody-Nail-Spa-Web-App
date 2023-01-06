@@ -1,6 +1,5 @@
 import React from "react";
 import { useEffect, useState } from "react";
-import api from "../../api.json";
 
 export default function ServiceTab(props) {
   const [width, setWidth] = useState(window.innerWidth);
