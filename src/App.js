@@ -7,6 +7,7 @@ import StaffPortal from "./Pages/StaffPortal";
 import Login from "./Pages/Login";
 import Booking from "./Pages/Booking";
 import About from "./Pages/About";
+import BookingV2 from "./Pages/BookingV2";
 
 import Footer from "./Components/Footer";
 import Navbar from "./Components/Navbar/Navbar";
@@ -42,6 +43,7 @@ function App() {
             <Route exact path="/about" element={<About />} />
             <Route exact path="/login" element={<Login />} />
             <Route exact path="/booking" element={<Booking />} />
+            <Route exact path="/bookingv2" element={<BookingV2 />} />
             <Route exact path="/services" element={<Services />} />
             <Route exact path="/staffportal" element={<StaffPortal />}>
               <Route path="/staffportal/" element={<DashBoard />} />

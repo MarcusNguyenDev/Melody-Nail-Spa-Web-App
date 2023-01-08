@@ -250,6 +250,7 @@ export default function Booking() {
             All payment will be made inside our shop. Thank you for using our
             services!
           </label>
+
           <div>
             <button
               className="m-4 p-3 w-[120px] rounded-xl font-bold bg-pink-300 text-pink-800 hover:bg-pink-400"

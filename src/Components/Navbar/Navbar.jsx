@@ -12,6 +12,7 @@ const linkDestination = {
   services: "/services",
   contact: "/contact",
   booking: "/booking",
+  bookingv2: "/bookingv2",
   staffPortal: "/StaffPortal",
   about: "/about",
 };
@@ -79,6 +80,7 @@ export default function Navbar() {
           <NavButton to={linkDestination.services} text="SERVICES" />
           <NavButton to={linkDestination.contact} text="CONTACT" />
           <NavButton to={linkDestination.staffPortal} text="STAFF PORTAL" />
+          <NavButton to={linkDestination.bookingv2} text="BOOKING V2" />
         </div>
       </div>
 

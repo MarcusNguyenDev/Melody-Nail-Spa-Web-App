@@ -13,9 +13,9 @@ export default function Contact() {
   }, []);
   return (
     <div>
-      <div className="flex justify-center">
+      <div className="flex justify-start mx-10">
         <div className="w-[250 px]">
-          <h1 className="mt-7 text-pink-700 font-bold text-2xl p-2 bg-pink-300 rounded-2xl">
+          <h1 className="mt-7 text-pink-700 font-bold text-2xl p-2 border-b-2 border-pink-700">
             Contact
           </h1>
         </div>
