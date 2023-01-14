@@ -39,7 +39,7 @@ export default function ServicesView() {
         </button>
       </div>
 
-      <div className="bg-white m-3 rounded-xl w-[600px] p-3">
+      <div className="bg-white m-3 shadow-md border-2 w-[600px] p-3">
         <div className=" grid grid-cols-3 my-1">
           <label className="col-span-1 flex">ID:</label>
           <label className="col-span-2 flex">{selectedId}</label>

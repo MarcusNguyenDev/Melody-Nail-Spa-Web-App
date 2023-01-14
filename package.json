@@ -2,6 +2,7 @@
   "name": "app_fe",
   "version": "0.1.0",
   "private": true,
+  "homepage": "./",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
@@ -18,6 +19,7 @@
     "react-dom": "^18.2.0",
     "react-dropdown": "^1.11.0",
     "react-notifications": "^1.7.4",
+    "react-qr-scanner": "^1.0.0-alpha.11",
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-slideshow-image": "^4.1.1",

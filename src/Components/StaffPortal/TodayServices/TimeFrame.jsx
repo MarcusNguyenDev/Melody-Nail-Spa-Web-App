@@ -9,10 +9,10 @@ export default function TimeFrame(props) {
   }, [props.services]);
 
   return (
-    <div className="">
+    <div className="border-2 border-pink-700 my-4 p-2">
       {servicesList.length > 0 ? (
         <div>
-          <div className="flex m-3 mb-0 font-bold text-red-600 text-2xl">
+          <div className="flex m-3 mb-0 font-bold text-emerald-600 text-2xl">
             Time: {props.time}
           </div>
           <div className="flex m-3 mt-0 font-bold">
@@ -61,7 +61,7 @@ export default function TimeFrame(props) {
         </div>
       ) : (
         <div>
-          <div className="flex m-3 font-bold text-red-600 text-2xl">
+          <div className="flex m-3 font-bold text-emerald-600 text-2xl">
             Time: {props.time}
           </div>
           <div className="flex m-3 font-bold">

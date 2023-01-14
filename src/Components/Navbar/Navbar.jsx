@@ -13,7 +13,8 @@ const linkDestination = {
   contact: "/contact",
   booking: "/booking",
   bookingv2: "/bookingv2",
-  staffPortal: "/StaffPortal",
+  staffPortal: "/StaffPortal/booking",
+  gallery: "/gallery",
   about: "/about",
 };
 
@@ -73,14 +74,17 @@ export default function Navbar() {
             </div>
           </div>
         </span>
-
+        <div className="sm:flex hidden justify-center items-center bg-pink-500 text-white">
+          98 Pine Mountain Rd Brassall Ipswich QLD 4305 || 07 3201 5914 || 0490
+          545 260 (Katie)
+        </div>
         <div className="sm:flex hidden justify-center items-center bg-pink-200">
           <NavButton to={linkDestination.home} text="HOME" />
           <NavButton to={linkDestination.about} text="ABOUT US" />
           <NavButton to={linkDestination.services} text="SERVICES" />
+          <NavButton to={linkDestination.gallery} text="GALLERY" />
           <NavButton to={linkDestination.contact} text="CONTACT" />
           <NavButton to={linkDestination.staffPortal} text="STAFF PORTAL" />
-          <NavButton to={linkDestination.bookingv2} text="BOOKING V2" />
         </div>
       </div>
 
@@ -103,6 +107,11 @@ export default function Navbar() {
           closeCallback={closeCallback}
           to={linkDestination.services}
           text="SERVICES"
+        />
+        <SMNavButton
+          closeCallback={closeCallback}
+          to={linkDestination.gallery}
+          text="GALLERY"
         />
         <SMNavButton
           closeCallback={closeCallback}

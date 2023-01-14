@@ -13,6 +13,11 @@ export default function Hero() {
       <div className="w-full">
         <Fade>
           <img
+            src={img4}
+            className=" w-full h-[40vh] sm-[50vh] md:h-[60vh] lg:h-[75vh] object-cover"
+            alt="Hero4"
+          />
+          <img
             src={img1}
             className=" w-full h-[40vh] sm:h-[50vh] md:h-[60vh] lg:h-[75vh] object-cover"
             alt="Hero1"
@@ -27,11 +32,6 @@ export default function Hero() {
             src={img3}
             className=" w-full h-[40vh] sm-[50vh] md:h-[60vh] lg:h-[75vh] object-cover"
             alt="Hero3"
-          />
-          <img
-            src={img4}
-            className=" w-full h-[40vh] sm-[50vh] md:h-[60vh] lg:h-[75vh] object-cover"
-            alt="Hero4"
           />
         </Fade>
       </div>

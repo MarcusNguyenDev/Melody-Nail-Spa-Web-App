@@ -45,7 +45,7 @@ export default function BookingInfo(props) {
                 props.setPhoneNumberCallBack(e.target.value);
                 setPhoneError(false);
               } else {
-                props.setPhoneNumberCallBack("");
+                props.setPhoneNumberCallBack(e.target.value);
                 setPhoneError(true);
               }
             }}

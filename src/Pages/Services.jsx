@@ -19,7 +19,7 @@ export default function Services() {
   }, []);
 
   return (
-    <div className="p-6 bg-pink-100">
+    <div className="p-6 bg-white">
       <div className="lg:mx-64">
         <div className="flex text-[24px] text-pink-700 mb-[12px] font-bold">
           OUR SERVICES

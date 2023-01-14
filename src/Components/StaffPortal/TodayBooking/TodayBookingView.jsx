@@ -39,6 +39,7 @@ export default function TodayBookingView() {
   const [selectedId] = useState(searchParams.get("id"));
   const [bookedServices, setBookedServices] = useState([]);
   const [Customer, setCustomer] = useState("");
+  const [PhoneNumber, setPhoneNumber] = useState("");
   const [isUpdating, setIsUpdating] = useState(false);
 
   useEffect(() => {
@@ -69,6 +70,8 @@ export default function TodayBookingView() {
           Time: time.find((e) => e.timeId === services.Time).time,
           Customer: BookingList.find((e) => e.Id === services.BookingId)
             .Customer,
+          PhoneNumber: BookingList.find((e) => e.Id === services.BookingId)
+            .PhoneNumber,
           ServiceName: servicesList.find((e) => e.Id === services.ServiceId)
             .ServiceName,
           Price: servicesList.find((e) => e.Id === services.ServiceId)
@@ -79,6 +82,7 @@ export default function TodayBookingView() {
       .then((data) => {
         setBookedServices(data);
         setCustomer(data[0].Customer);
+        setPhoneNumber(data[0].PhoneNumber);
         setIsUpdating(false);
       })
       .catch((err) => console.log(err));
@@ -93,10 +97,13 @@ export default function TodayBookingView() {
         </div>
       </div>
 
-      <div className="flex-col">
+      <div className="flex-col shadow-md border-2 m-4">
         <div className="bg-white m-4 p-4 rounded-lg">
           <div className="flex text-xl font-bold">Booking ID: {selectedId}</div>
           <div className="flex text-xl font-bold">Customer: {Customer}</div>
+          <div className="flex text-xl font-bold">
+            Phone number: {PhoneNumber}
+          </div>
           <div className="flex text-xl font-bold">
             Total: $
             {bookedServices.reduce(
@@ -183,7 +190,7 @@ export default function TodayBookingView() {
         <button
           className="flex m-5 p-2 bg w-[80px] bg-pink-300 justify-center rounded-2xl text-pink-800 font-bold hover:bg-pink-500"
           onClick={() => {
-            navigate("../TodayBooking");
+            navigate("../Booking");
           }}
         >
           Back

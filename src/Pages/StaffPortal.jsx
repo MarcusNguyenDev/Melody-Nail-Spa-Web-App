@@ -41,13 +41,13 @@ export default function StaffPortal() {
     );
   } else {
     return (
-      <div>
-        <div className="flex">
-          <div className="m-0 p-0 bg-pink-900">
+      <div className="h-full">
+        <div className="flex h-full">
+          <div className="m-0 p-0 bg-pink-900 h-full fixed">
             <StaffNavbar />
           </div>
-          <div className="w-[100%] bg-pink-50 justify-center">
-            <Outlet />
+          <div className="w-[100%] justify-center ml-[150px]">
+            <Outlet className="w-full h-full" />
           </div>
         </div>
       </div>

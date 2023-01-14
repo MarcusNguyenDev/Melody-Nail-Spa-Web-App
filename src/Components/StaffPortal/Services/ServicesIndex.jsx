@@ -36,7 +36,7 @@ export default function ServicesIndex() {
   }, [loading]);
 
   return (
-    <div>
+    <div className="">
       <div className="flex mt-2">
         <button
           className="justify-start t-4 ml-4 p-2 bg-pink-300 rounded-2xl font-bold text-pink-800 hover:bg-pink-600"
@@ -48,7 +48,7 @@ export default function ServicesIndex() {
         </button>
       </div>
 
-      <div className="m-4 bg-white rounded-xl">
+      <div className="m-4 bg-white shadow-md border-2">
         <div className="p-4">
           <div className="flex my-2">
             <label>Search by Type:</label>

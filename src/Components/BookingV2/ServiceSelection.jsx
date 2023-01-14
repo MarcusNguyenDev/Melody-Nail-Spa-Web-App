@@ -17,6 +17,7 @@ export default function ServiceSelection(props) {
           availableTime={props.availableTime}
           services={props.services}
           selectedService={e}
+          selectedServiceList={props.selectedService}
           setService={(id, serviceId) => props.setService(id, serviceId)}
           setTime={(id, timeId) => props.setTime(id, timeId)}
           removeService={(id) => props.removeService(id)}

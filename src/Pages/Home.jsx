@@ -2,6 +2,8 @@ import React from "react";
 import Hero from "../Components/Home/Hero";
 import Services from "../Components/Home/Services";
 import About from "../Components/Home/About";
+import Rating from "../Components/Home/Rating";
+
 import { useEffect } from "react";
 
 export default function Home() {
@@ -13,6 +15,7 @@ export default function Home() {
       <Hero />
       <About />
       <Services />
+      <Rating />
     </div>
   );
 }

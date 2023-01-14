@@ -7,15 +7,17 @@ import BookingInfo from "../Components/BookingV2/BookingInfo";
 import DateSelection from "../Components/BookingV2/DateSelection";
 import ServiceSelection from "../Components/BookingV2/ServiceSelection";
 import BookingConfirmation from "../Components/BookingV2/BookingConfirmation";
+import ThankYouSection from "../Components/BookingV2/ThankYouSection";
 
 // To Marcus or who ever working on this in the future:
-//This is a callback hell. Should've use Redux instead ~~
+//This is a callback hell. Should've used Redux instead ~~
 
 export default function BookingV2() {
   const [Err, setErr] = useState(false);
   const navigate = useNavigate();
   const [ErrMessage, setErrMessage] = useState("");
 
+  const [selecting, setSelecting] = useState(true);
   const [confirmation, setConfirmation] = useState(false);
 
   // Information section
@@ -33,7 +35,12 @@ export default function BookingV2() {
     { id: 1, ServiceId: "", TimeId: "" },
   ]);
 
+  // Thank you section
+  const [thankYou, setThankYou] = useState(false);
+  const [qrURL, setqrURL] = useState("");
+
   useEffect(() => {
+    window.scrollTo(0, 0);
     Promise.all([
       fetch(api.api + "/servicetypes").then((res) => res.json()),
       fetch(api.api + "/services").then((res) => res.json()),
@@ -64,7 +71,7 @@ export default function BookingV2() {
         </div>
       </div>
 
-      {!confirmation ? (
+      {selecting ? (
         <div>
           <div className={"w-full"}>
             <BookingInfo
@@ -147,7 +154,9 @@ export default function BookingV2() {
             />
           </div>
 
-          {Err ? <label>{ErrMessage}</label> : null}
+          {Err ? (
+            <label className="font-bold text-red-600">{ErrMessage}</label>
+          ) : null}
 
           <div className={"flex justify-center"}>
             <button
@@ -181,6 +190,7 @@ export default function BookingV2() {
                 } else {
                   setErr(false);
                   window.scrollTo(0, 0);
+                  setSelecting(false);
                   setConfirmation(true);
                 }
               }}
@@ -189,7 +199,9 @@ export default function BookingV2() {
             </button>
           </div>
         </div>
-      ) : (
+      ) : null}
+
+      {confirmation ? (
         <div>
           <div className={""}>
             <BookingConfirmation
@@ -204,7 +216,11 @@ export default function BookingV2() {
           <div className={"flex justify-center"}>
             <button
               className="border p-2 w-[100px] m-4 font-bold bg-pink-500 hover:bg-pink-400 text-white"
-              onClick={() => setConfirmation(false)}
+              onClick={() => {
+                window.scrollTo(0, 0);
+                setConfirmation(false);
+                setSelecting(true);
+              }}
             >
               Back
             </button>
@@ -231,14 +247,38 @@ export default function BookingV2() {
                 };
                 fetch(api.api + `/booking/bookv2`, message)
                   .then((res) => res.json())
-                  .then(() => navigate("../"));
+                  .then((res) => {
+                    if (res.error) {
+                      alert("Something went wrong, please try again later");
+                      navigate("../");
+                    } else {
+                      setqrURL(res.url);
+                      setThankYou(true);
+                      setConfirmation(false);
+                    }
+                  });
               }}
             >
               Book
             </button>
           </div>
         </div>
-      )}
+      ) : null}
+
+      {thankYou ? (
+        <div>
+          <ThankYouSection url={qrURL} />
+          <button
+            className="border p-2 w-[100px] m-4 font-bold bg-pink-500 hover:bg-pink-400 text-white"
+            onClick={() => {
+              window.scrollTo(0, 0);
+              navigate("../");
+            }}
+          >
+            Home
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

@@ -160,7 +160,7 @@ export default function TodayBooking() {
           ))}
         </select>
       </div>
-      <div className=" bg-white m-4 rounded-lg">
+      <div className=" bg-white m-2 shadow-md">
         {timeQuery === "" ? (
           <div>
             {time.map((time) => {
@@ -174,13 +174,12 @@ export default function TodayBooking() {
                     setFinished={setFinishedCallBack}
                     setUnFinished={setUnFinishedCallBack}
                   />
-                  <hr className=" border-pink-600 border-[2px] m-6" />
                 </div>
               );
             })}
           </div>
         ) : (
-          <div>
+          <div className="">
             {time
               .filter((e) => e.timeId === parseInt(timeQuery))
               .map((time) => {
@@ -194,7 +193,6 @@ export default function TodayBooking() {
                       setFinished={setFinishedCallBack}
                       setUnFinished={setUnFinishedCallBack}
                     />
-                    <hr className=" border-pink-600 border-[2px] m-6" />
                   </div>
                 );
               })}

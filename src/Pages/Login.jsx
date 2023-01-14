@@ -76,7 +76,7 @@ export default function Login() {
                     successNotification("success");
                     sessionStorage.setItem("jwt", res.token);
                     sessionStorage.setItem("loggedIn", "true");
-                    navigate("/staffportal");
+                    navigate("/staffportal/booking");
                   } else {
                     const errorNotification = () => {
                       NotificationManager.error(res.message, "Error", 10000);

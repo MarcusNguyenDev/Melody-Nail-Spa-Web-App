@@ -37,7 +37,7 @@ export default function ServiceSelectionElement(props) {
       }
     >
       <button
-        className="absolute right-3 top-0 font-mono font-bold text-red-600 text-3xl"
+        className="absolute right-3 top-0 font-Dancing-Script font-bold text-red-600 text-3xl"
         onClick={() => props.removeService(props.id)}
       >
         X
@@ -49,7 +49,7 @@ export default function ServiceSelectionElement(props) {
         <div className="flex  m-2 text-lg">Select a service:</div>
         <div className="col-span-2 pr-2">
           <select
-            className="p-2 w-full mt-2 flex flex-wrap"
+            className="p-2 border-2 w-full mt-2 flex flex-wrap"
             value={props.selectedService.ServiceId}
             onChange={(e) => props.setService(props.id, e.target.value)}
           >
@@ -100,20 +100,74 @@ export default function ServiceSelectionElement(props) {
 
       {selectingTime ? (
         <div>
-          <p className="flex text-lg mx-2">Our available Time:</p>
-          <div className="flex flex-wrap mx-2">
-            {props.availableTime.map((available) => (
-              <button
-                key={available}
-                className="border-2 mr-2 mb-1 p-1 hover:bg-gray-200"
-                onClick={() => {
-                  setSelectingTime(!selectingTime);
-                  props.setTime(props.id, available);
-                }}
-              >
-                {time.filter((e) => e.timeId === parseInt(available))[0].time}
-              </button>
-            ))}
+          <p className="flex text-lg mx-2 font-bold">Our available Time:</p>
+          <label className="flex flex-wrap mx-4 font-bold">Morning</label>
+          <div className={"flex flex-wrap mx-4"}>
+            {props.availableTime
+              .filter((e) => e <= 5)
+              .map((available) => (
+                <button
+                  key={available}
+                  className={
+                    props.selectedServiceList.filter(
+                      (e) => parseInt(e.TimeId) === parseInt(available)
+                    ).length === 0
+                      ? "border-2 mr-2 mb-1 p-1 hover:bg-gray-200"
+                      : "border-2 border-emerald-600 mr-2 mb-1 p-1 hover:bg-gray-200"
+                  }
+                  onClick={() => {
+                    setSelectingTime(!selectingTime);
+                    props.setTime(props.id, available);
+                  }}
+                >
+                  {time
+                    .filter((e) => e.timeId === parseInt(available))
+                    .map((e) => e.time)}
+                </button>
+              ))}
+          </div>
+
+          <label className="flex flex-wrap mx-4 font-bold">Afternoon</label>
+          <div className="flex flex-wrap mx-4">
+            {props.availableTime
+              .filter((e) => e > 5 && e <= 17)
+              .map((available) => (
+                <button
+                  key={available}
+                  className="border-2 mr-2 mb-1 p-1 hover:bg-gray-200"
+                  onClick={() => {
+                    setSelectingTime(!selectingTime);
+                    props.setTime(props.id, available);
+                  }}
+                >
+                  {time
+                    .filter((e) => e.timeId === parseInt(available))
+                    .map((e) => e.time)}
+                </button>
+              ))}
+          </div>
+
+          {props.availableTime.length > 17 ? (
+            <label className="flex flex-wrap mx-4 font-bold">Evening</label>
+          ) : null}
+
+          <div className="flex flex-wrap mx-4">
+            {props.availableTime
+              .filter((e) => e >= 18)
+              .map((available) => (
+                <button
+                  key={available}
+                  className="border-2 mr-2 mb-1 p-1 hover:bg-gray-200"
+                  onClick={() => {
+                    setSelectingTime(!selectingTime);
+                    props.setTime(props.id, available);
+                  }}
+                >
+                  {time
+                    .filter((e) => e.timeId === parseInt(available))
+                    .map((e) => e.time)}
+                </button>
+              ))}
           </div>
         </div>
       ) : null}

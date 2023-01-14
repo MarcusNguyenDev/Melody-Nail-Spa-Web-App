@@ -42,6 +42,7 @@ export default function DateSelection(props) {
       <p className="text-pink-700">
         * Upon selecting new date, time selection below will be reset
       </p>
+      <p className="text-pink-700">We open until 7:pm on Thursday</p>
       {dateError ? (
         <div className="m-[10px]">
           <label className="text-pink-700 font-bold">
