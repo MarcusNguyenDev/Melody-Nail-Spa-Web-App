@@ -43,9 +43,10 @@ export default function ServiceTypeIndex() {
           <div className="border font-bold col-span-2 text-white"></div>
         </div>
 
-        {serviceTypeList.map((data) => (
+        {serviceTypeList.map((data, i) => (
           <ServiceTypeIndexRow
             key={data.Id}
+            index={i + 1}
             ServiceType={data}
             loadingCallBack={loadingCallback}
           />

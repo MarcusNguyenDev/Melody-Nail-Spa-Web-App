@@ -58,8 +58,8 @@ export default function ServicesIndex() {
                 onChange={(e) => setQueryByType(e.target.value)}
               >
                 <option value="">{"No selection"}</option>
-                {servicetypes.map((e) => (
-                  <option key={e.Id} value={e.Id}>
+                {servicetypes.map((e, i) => (
+                  <option key={e.Id} value={e.Id} index={i}>
                     {e.ServiceTypeName}
                   </option>
                 ))}
@@ -74,20 +74,22 @@ export default function ServicesIndex() {
             <div className="font-bold col-span-2 border"></div>
           </div>
           {queryByType === ""
-            ? services.map((row) => (
+            ? services.map((row, i) => (
                 <ServicesIndexRow
                   key={row.Id}
                   service={row}
+                  index={i + 1}
                   loadingCallBack={loadingCallBack}
                 />
               ))
             : services
                 .filter((e) => e.ServiceTypeId === parseInt(queryByType))
-                .map((row) => (
+                .map((row, i) => (
                   <ServicesIndexRow
                     key={row.Id}
                     service={row}
                     loadingCallBack={loadingCallBack}
+                    index={i + 1}
                   />
                 ))}
         </div>

@@ -6,7 +6,7 @@ export default function ServicesIndexRow(props) {
   const navigate = useNavigate();
   return (
     <div className="grid grid-cols-9 ">
-      <div className="col-span-1 border">{props.service.Id}</div>
+      <div className="col-span-1 border">{props.index}</div>
       <div className="col-span-2 border">{props.service.ServiceName}</div>
       <div className="col-span-2 border">{props.service.ServiceType}</div>
       <div className="col-span-2 border">${props.service.ServicePrice}</div>

@@ -10,7 +10,7 @@ export default function About() {
   }, []);
 
   return (
-    <div className="lg:mx-64">
+    <div className="lg:mx-96">
       <div className="flex m-4 text-2xl font-bold text-pink-700">
         <div className="border-b-2 border-pink-700">ABOUT US</div>
       </div>
