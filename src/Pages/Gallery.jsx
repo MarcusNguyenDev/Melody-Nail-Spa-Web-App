@@ -6,6 +6,7 @@ import GalleryCard from "../Components/Gallery/GalleryCard";
 export default function Gallery() {
   const [galleryList, setGalleryList] = useState([]);
   useEffect(() => {
+    window.scrollTo(0, 0);
     fetch(api.api + "/gallery")
       .then((res) => res.json())
       .then((data) => setGalleryList(data));

@@ -187,7 +187,7 @@ export default function TodayBookingIndex() {
                   e.Customer.slice(0, queryByName.length) === queryByName;
               } else if (queryByName === "" && queryByPhone !== "") {
                 result =
-                  e.PhoneNumber.slice(0, queryByPhone.length) === queryByName;
+                  e.PhoneNumber.slice(0, queryByPhone.length) === queryByPhone;
               } else if (queryByName !== "" && queryByPhone !== "") {
                 result =
                   e.PhoneNumber.slice(0, queryByPhone.length) ===

@@ -25,8 +25,8 @@ export default function Services() {
             <div key={servicetype.Id}>
               <div className="flex justify-center">
                 <img
-                  src="https://dummyimage.com/1900x1900"
-                  alt={servicetype.ServiceTypeName + " Image"}
+                  src={api.api + `/images/${servicetype.ServiceTypeImage}`}
+                  alt={servicetype.ServiceTypeName}
                   className="w-[200px] h-[200px] rounded-full border-pink-700 border mt-2 sm:mt-0"
                 />
               </div>
