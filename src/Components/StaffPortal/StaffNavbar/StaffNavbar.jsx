@@ -14,7 +14,7 @@ export default function StaffNavbar() {
         </div>
         <hr className="m-3 mb-1 border-white" />
 
-        <StaffNavbarButton to={"./"} text="Dash Board" />
+        {/*<StaffNavbarButton to={"./"} text="Dash Board" />*/}
         <StaffNavbarButton to={"./Booking"} text="Booking" />
         <StaffNavbarButton to={"./todayServices"} text="Today Services" />
 
