@@ -127,7 +127,7 @@ export default function Contact() {
                 <div className="flex border-b-2">
                   <div className="flex w-[95px]">Saturday</div>
 
-                  <div className="flex">9:00am - 5:30pm</div>
+                  <div className="flex">9:00am - 4:00pm</div>
                 </div>
 
                 <div className="flex border-b-2">

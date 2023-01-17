@@ -105,7 +105,7 @@ export default function ServicesView() {
               className="justify-start t-4 m-4 p-2 w-[100px] bg-pink-300 rounded-2xl font-bold text-pink-800 hover:bg-pink-600"
               onClick={() => {
                 const message = {
-                  method: "POST",
+                  method: "PUT",
                   headers: {
                     accept: "application/json",
                     "Content-Type": "application/json",
@@ -119,7 +119,7 @@ export default function ServicesView() {
                   }),
                 };
                 console.log(message.body);
-                fetch(api.api + "/services/post", message)
+                fetch(api.api + "/services/edit/"+selectedId, message)
                   .then((res) => res.json())
                   .then((res) => window.alert(res.message));
                 navigate("../services");

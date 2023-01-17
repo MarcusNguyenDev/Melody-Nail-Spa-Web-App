@@ -29,7 +29,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "starthttps": "PORT=443 HTTPS=true SSL_CRT_FILE=/etc/letsencrypt/live/marcusnguyen-developer.com/fullchain.pem SSL_KEY_FILE=/etc/letsencrypt/live/marcusnguyen-developer.com/privkey.pem react-scripts start",
+    "starthttps": "PORT=443 HTTPS=true SSL_CRT_FILE=/etc/letsencrypt/live/melodynailspa.com/fullchain.pem SSL_KEY_FILE=/etc/letsencrypt/live/melodynailspa.com/privkey.pem react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

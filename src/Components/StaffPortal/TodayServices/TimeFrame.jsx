@@ -16,7 +16,7 @@ export default function TimeFrame(props) {
             Time: {props.time}
           </div>
           <div className="flex m-3 mt-0 font-bold">
-            {4 - servicesList.length} left available
+            {3 - servicesList.length} left available
           </div>
           <div className="grid grid-cols-6 border bg-blue-400">
             <div className="border">Booking ID</div>
@@ -65,7 +65,7 @@ export default function TimeFrame(props) {
             Time: {props.time}
           </div>
           <div className="flex m-3 font-bold">
-            {4 - servicesList.length} left available
+            {3 - servicesList.length} left available
           </div>
           <div className="flex m-3 font-bold">No Services booked</div>
         </div>
