@@ -55,9 +55,7 @@ export default function Contact() {
               </svg>
             </div>
 
-            <div className="ml-5 ">
-              98 Pine Mountain Rd Brassall Ipswich QLD 4305
-            </div>
+            <div className="ml-5 ">98 Pine Mountain Rd Brassall QLD 4305</div>
           </div>
 
           <div className="flex my-2">

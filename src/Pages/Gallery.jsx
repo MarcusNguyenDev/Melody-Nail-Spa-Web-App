@@ -15,7 +15,7 @@ export default function Gallery() {
       <div className="flex m-4 text-3xl font-bold text-pink-700">
         <div className="border-b-2 border-pink-700">Gallery</div>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 m-2">
+      <div className="grid grid-cols-1 sm:grid-cols-3 m-2 lg:grid-cols-4">
         {galleryList.map((e) => (
           <GalleryCard key={e.Id} data={e} />
         ))}

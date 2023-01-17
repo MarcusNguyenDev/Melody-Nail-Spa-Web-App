@@ -75,8 +75,8 @@ export default function Navbar() {
           </div>
         </span>
         <div className="sm:flex hidden justify-center items-center bg-pink-500 text-white">
-          98 Pine Mountain Rd Brassall Ipswich QLD 4305 || 07 3201 5914 || 0490
-          545 260 (Katie)
+          98 Pine Mountain Rd Brassall QLD 4305 || 07 3201 5914 || 0490 545 260
+          (Katie)
         </div>
         <div className="sm:flex hidden justify-center items-center bg-pink-200">
           <NavButton to={linkDestination.home} text="HOME" />
