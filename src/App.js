@@ -68,9 +68,7 @@ function App() {
               />
 
               {/* Staff Portal Users */}
-              <Route path="/staffportal/users" element={<Users />}>
-                <Route path="/staffportal/users/create" element={<Users />} />
-              </Route>
+              <Route path="/staffportal/users" element={<Users />} />
 
               {/* Staff Portal Service Types */}
               <Route

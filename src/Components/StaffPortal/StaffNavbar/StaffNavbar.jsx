@@ -22,9 +22,10 @@ export default function StaffNavbar() {
         <StaffNavbarButton to={"./servicetype"} text="Service Types" />
         <StaffNavbarButton to={"./services"} text="Services" />
         <StaffNavbarButton to={"./gallery"} text="Gallery" />
+        <StaffNavbarButton to={"./users"} text="Change Password" />
         {/*
         <div className="m-5"></div>
-        <StaffNavbarButton to={"./users"} text="Users" />
+        
         <div className="m-5"></div>
         <StaffNavbarButton to={"./dashboard"} text="Report" />*/}
 
