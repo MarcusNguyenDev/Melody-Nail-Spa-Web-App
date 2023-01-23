@@ -7,8 +7,11 @@ import GalleryCard from "../Components/Gallery/GalleryCard";
 export default function Gallery() {
   const [galleryList, setGalleryList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [perPage] = useState(window.innerWidth <= 1024 ? 6 : 8);
+  const [perPage, setPerPage] = useState(window.innerWidth <= 1024 ? 6 : 8);
   useEffect(() => {
+    window.addEventListener("resize", (e) =>
+      setPerPage(window.innerWidth <= 1024 ? 6 : 8)
+    );
     window.scrollTo(0, 0);
     fetch(api.api + "/gallery")
       .then((res) => res.json())
