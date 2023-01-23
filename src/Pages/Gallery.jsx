@@ -32,7 +32,7 @@ export default function Gallery() {
       <div className="flex justify-center w-full">
         <Pagination
           className="flex justify-center mt-6"
-          pageCount={galleryList.length / perPage}
+          pageCount={Math.ceil(galleryList.length / perPage)}
           breakClassName="my-2 mx-1 sm:mx-2"
           breakLabel="..."
           nextClassName="font-bold text-pink-700 my-2 ml-1 sm:mx-2 border-pink-700"
@@ -47,7 +47,6 @@ export default function Gallery() {
             setCurrentPage(selected);
             window.scrollTo(0, 0);
           }}
-          forcePage={currentPage}
           renderOnZeroPageCount={null}
         />
       </div>

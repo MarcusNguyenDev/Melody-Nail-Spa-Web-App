@@ -292,7 +292,7 @@ export default function TodayBookingIndex() {
         <div className="flex justify-center">
           <Pagination
             className="flex justify-center mt-6"
-            pageCount={BookedList.length / perPage}
+            pageCount={Math.ceil(BookedList.length / perPage)}
             breakLabel=". . ."
             nextClassName="font-bold text-pink-700 my-2 mx-4"
             previousClassName="font-bold text-pink-700 my-2 mx-4"
@@ -303,7 +303,6 @@ export default function TodayBookingIndex() {
               let selected = data.selected;
               setCurrentPage(selected);
             }}
-            forcePage={currentPage}
             renderOnZeroPageCount={null}
           />
         </div>
