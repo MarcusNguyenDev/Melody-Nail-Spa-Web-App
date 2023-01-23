@@ -5,6 +5,7 @@ import api from "../../../api.json";
 import ReactDatePicker from "react-datepicker";
 import QrReader from "react-qr-scanner";
 import moment from "moment";
+import Pagination from "react-paginate";
 
 const today = new Date();
 const dd = String(today.getDate()).padStart(2, "0");
@@ -19,6 +20,8 @@ export default function TodayBookingIndex() {
   const [queryByPhone, setQueryByPhone] = useState("");
   const [SelectedDate, setSelectedDate] = useState(new Date());
   const [QRScanning, setQRScanning] = useState(false);
+  const [currentPage, setCurrentPage] = useState(0);
+  const [perPage] = useState(10);
 
   useEffect(() => {
     const message = {
@@ -145,6 +148,7 @@ export default function TodayBookingIndex() {
               setSelectedDate(new Date());
               setQueryByName("");
               setQueryByPhone("");
+              setCurrentPage(0);
             }}
           >
             Reset Search
@@ -161,12 +165,6 @@ export default function TodayBookingIndex() {
           The <label className="text-emerald-600">All Data search</label> button
           will show all recorded data regardless date. Press Reset to return to
           normal mode.
-        </p>
-
-        <p className="font-bold text-pink-700">
-          The <label className="text-emerald-600">All Data search</label> button
-          require to type full. It will not update on type like sort by date
-          version because it will search entire database.
         </p>
 
         {QRScanning ? (
@@ -208,7 +206,10 @@ export default function TodayBookingIndex() {
           <div className="border">Options</div>
         </div>
         {queryByName === "" && queryByPhone === ""
-          ? BookedList.map((row, i) => {
+          ? BookedList.slice(
+              currentPage * perPage,
+              currentPage * perPage + perPage
+            ).map((row, i) => {
               return (
                 <div className="grid grid-cols-7 border-black" key={i}>
                   <div className="border">{i + 1}</div>
@@ -238,43 +239,74 @@ export default function TodayBookingIndex() {
               let result;
               if (queryByName !== "" && queryByPhone === "") {
                 result =
-                  e.Customer.slice(0, queryByName.length) === queryByName;
+                  e.Customer.toLocaleLowerCase().slice(
+                    0,
+                    queryByName.length
+                  ) === queryByName.toLocaleLowerCase();
               } else if (queryByName === "" && queryByPhone !== "") {
                 result =
-                  e.PhoneNumber.slice(0, queryByPhone.length) === queryByPhone;
+                  e.PhoneNumber.toLocaleLowerCase().slice(
+                    0,
+                    queryByPhone.length
+                  ) === queryByPhone.toLocaleLowerCase();
               } else if (queryByName !== "" && queryByPhone !== "") {
                 result =
-                  e.PhoneNumber.slice(0, queryByPhone.length) ===
-                    queryByPhone &&
-                  e.Customer.slice(0, queryByName.length) === queryByName;
+                  e.PhoneNumber.toLocaleLowerCase().slice(
+                    0,
+                    queryByPhone.length
+                  ) === queryByPhone.toLocaleLowerCase() &&
+                  e.Customer.toLocaleLowerCase().slice(
+                    0,
+                    queryByName.length
+                  ) === queryByName.toLocaleLowerCase();
               }
               return result;
-            }).map((row, i) => {
-              return (
-                <div className="grid grid-cols-7 border-black" key={i}>
-                  <div className="border">{i + 1}</div>
-                  <div className="border">{row.Customer}</div>
-                  <div className="border">{row.PhoneNumber}</div>
-                  <div className="border">
-                    {new moment(row.BookingDate).format("DD/MM/YY")}
+            })
+              .slice(currentPage * perPage, currentPage * perPage + perPage)
+              .map((row, i) => {
+                return (
+                  <div className="grid grid-cols-7 border-black" key={i}>
+                    <div className="border">{i + 1}</div>
+                    <div className="border">{row.Customer}</div>
+                    <div className="border">{row.PhoneNumber}</div>
+                    <div className="border">
+                      {new moment(row.BookingDate).format("DD/MM/YY")}
+                    </div>
+                    <div className="border">
+                      {new moment(row.BookingDate).fromNow()}
+                    </div>
+                    <div className="border">{row.CheckedIn}</div>
+                    <div className="border">
+                      <button
+                        className="text-emerald-500 font-semibold"
+                        onClick={() => {
+                          navigate(`./view?id=${row.Id}`);
+                        }}
+                      >
+                        View
+                      </button>
+                    </div>
                   </div>
-                  <div className="border">
-                    {new moment(row.BookingDate).fromNow()}
-                  </div>
-                  <div className="border">{row.CheckedIn}</div>
-                  <div className="border">
-                    <button
-                      className="text-emerald-500 font-semibold"
-                      onClick={() => {
-                        navigate(`./view?id=${row.Id}`);
-                      }}
-                    >
-                      View
-                    </button>
-                  </div>
-                </div>
-              );
-            })}
+                );
+              })}
+        <div className="flex justify-center">
+          <Pagination
+            className="flex justify-center mt-6"
+            pageCount={BookedList.length / perPage}
+            breakLabel=". . ."
+            nextClassName="font-bold text-pink-700 my-2 mx-4"
+            previousClassName="font-bold text-pink-700 my-2 mx-4"
+            pageClassName="my-2 mx-2"
+            pageRangeDisplayed={5}
+            activeClassName="my-2 mx-2 text-pink-700 font-bold"
+            onPageChange={(data) => {
+              let selected = data.selected;
+              setCurrentPage(selected);
+            }}
+            forcePage={currentPage}
+            renderOnZeroPageCount={null}
+          />
+        </div>
       </div>
     </div>
   );
