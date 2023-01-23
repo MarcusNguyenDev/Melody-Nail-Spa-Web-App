@@ -7,10 +7,22 @@ import GalleryCard from "../Components/Gallery/GalleryCard";
 export default function Gallery() {
   const [galleryList, setGalleryList] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
-  const [perPage, setPerPage] = useState(window.innerWidth <= 1024 ? 6 : 8);
+  const [perPage, setPerPage] = useState(
+    window.innerWidth <= 640
+      ? 10
+      : window.innerWidth >= 640 && window.innerWidth <= 1024
+      ? 6
+      : 8
+  );
   useEffect(() => {
     window.addEventListener("resize", (e) =>
-      setPerPage(window.innerWidth <= 1024 ? 6 : 8)
+      setPerPage(
+        window.innerWidth <= 640
+          ? 10
+          : window.innerWidth >= 640 && window.innerWidth <= 1024
+          ? 6
+          : 8
+      )
     );
     window.scrollTo(0, 0);
     fetch(api.api + "/gallery")
