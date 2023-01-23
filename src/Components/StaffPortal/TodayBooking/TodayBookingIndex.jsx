@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import api from "../../../api.json";
 import ReactDatePicker from "react-datepicker";
 import QrReader from "react-qr-scanner";
+import moment from "moment";
 
 const today = new Date();
 const dd = String(today.getDate()).padStart(2, "0");
@@ -60,7 +61,7 @@ export default function TodayBookingIndex() {
       </div>
 
       <div className="bg-white m-4 p-4  border-2 shadow-xl">
-        <div className="font-bold text-2xl">Today Bookings</div>
+        <div className="font-bold text-2xl">Bookings</div>
 
         <div className="flex-col">
           <div className="grid grid-cols-2 m-2 w-[300px]">
@@ -108,6 +109,39 @@ export default function TodayBookingIndex() {
           <button
             className="p-2 w-[200px] mr-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
             onClick={() => {
+              const message = {
+                method: "GET",
+                headers: {
+                  accept: "application/json",
+                  "Content-Type": "application/json",
+                  authorization: "Bearer " + sessionStorage.getItem("jwt"),
+                },
+              };
+              fetch(
+                api.api +
+                  `/todayBooking/BookingList/Search?name=${queryByName}&phone=${queryByPhone}`,
+                message
+              )
+                .then((res) => res.json())
+                .then((data) => {
+                  if (!data.error) {
+                    if (data.length > 0) {
+                      setBookedList(data);
+                    } else {
+                      alert("Not Found in the database");
+                    }
+                  } else {
+                    alert(data.message);
+                  }
+                });
+            }}
+          >
+            All Data Search
+          </button>
+
+          <button
+            className="p-2 w-[200px] mr-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
+            onClick={() => {
               setSelectedDate(new Date());
               setQueryByName("");
               setQueryByPhone("");
@@ -122,6 +156,18 @@ export default function TodayBookingIndex() {
             QR Scanner
           </button>
         </div>
+
+        <p className="font-bold text-pink-700">
+          The <label className="text-emerald-600">All Data search</label> button
+          will show all recorded data regardless date. Press Reset to return to
+          normal mode.
+        </p>
+
+        <p className="font-bold text-pink-700">
+          The <label className="text-emerald-600">All Data search</label> button
+          require to type full. It will not update on type like sort by date
+          version because it will search entire database.
+        </p>
 
         {QRScanning ? (
           <div>
@@ -152,20 +198,28 @@ export default function TodayBookingIndex() {
           </div>
         ) : null}
 
-        <div className="grid grid-cols-5 border-black bg-blue-400">
+        <div className="grid grid-cols-7 border-black bg-blue-400 text-white font-bold">
           <div className="border">Booking ID</div>
           <div className="border">Customer</div>
           <div className="border">Phone</div>
+          <div className="border">Date</div>
+          <div className="border">Date from NOW</div>
           <div className="border">Checked In</div>
           <div className="border">Options</div>
         </div>
         {queryByName === "" && queryByPhone === ""
-          ? BookedList.map((row) => {
+          ? BookedList.map((row, i) => {
               return (
-                <div className="grid grid-cols-5 border-black" key={row.Id}>
-                  <div className="border">{row.Id}</div>
+                <div className="grid grid-cols-7 border-black" key={i}>
+                  <div className="border">{i + 1}</div>
                   <div className="border">{row.Customer}</div>
                   <div className="border">{row.PhoneNumber}</div>
+                  <div className="border">
+                    {new moment(row.BookingDate).format("DD/MM/YY")}
+                  </div>
+                  <div className="border">
+                    {new moment(row.BookingDate).fromNow()}
+                  </div>
                   <div className="border">{row.CheckedIn}</div>
                   <div className="border">
                     <button
@@ -195,12 +249,18 @@ export default function TodayBookingIndex() {
                   e.Customer.slice(0, queryByName.length) === queryByName;
               }
               return result;
-            }).map((row) => {
+            }).map((row, i) => {
               return (
-                <div className="grid grid-cols-5 border-black" key={row.Id}>
-                  <div className="border">{row.Id}</div>
+                <div className="grid grid-cols-7 border-black" key={i}>
+                  <div className="border">{i + 1}</div>
                   <div className="border">{row.Customer}</div>
                   <div className="border">{row.PhoneNumber}</div>
+                  <div className="border">
+                    {new moment(row.BookingDate).format("DD/MM/YY")}
+                  </div>
+                  <div className="border">
+                    {new moment(row.BookingDate).fromNow()}
+                  </div>
                   <div className="border">{row.CheckedIn}</div>
                   <div className="border">
                     <button

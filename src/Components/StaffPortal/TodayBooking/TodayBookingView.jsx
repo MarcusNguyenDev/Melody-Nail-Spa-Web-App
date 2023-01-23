@@ -27,12 +27,6 @@ const time = [
   { timeId: 19, time: "6:30pm - 7:00pm" },
 ];
 
-const today = new Date();
-const dd = String(today.getDate()).padStart(2, "0");
-const mm = String(today.getMonth() + 1).padStart(2, "0");
-const yyyy = today.getFullYear();
-const date = dd + "/" + mm + "/" + yyyy;
-
 export default function TodayBookingView() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -68,6 +62,8 @@ export default function TodayBookingView() {
           BookedServiceId: services.Id,
           BookingId: services.BookingId,
           Time: time.find((e) => e.timeId === services.Time).time,
+          BookingDate: BookingList.find((e) => e.Id === services.BookingId)
+            .BookingDate,
           Customer: BookingList.find((e) => e.Id === services.BookingId)
             .Customer,
           PhoneNumber: BookingList.find((e) => e.Id === services.BookingId)
@@ -90,13 +86,6 @@ export default function TodayBookingView() {
 
   return (
     <div>
-      <div className="flex m-4">
-        <div className="flex bg-emerald-600 p-3 rounded-2xl">
-          <div className="font-bold text-white">Date:</div>
-          <div className="font-bold text-xl pl-5 text-white">{date}</div>
-        </div>
-      </div>
-
       <div className="flex-col shadow-md border-2 m-4">
         <div className="bg-white m-4 p-4 rounded-lg">
           <div className="flex text-xl font-bold">Booking ID: {selectedId}</div>
