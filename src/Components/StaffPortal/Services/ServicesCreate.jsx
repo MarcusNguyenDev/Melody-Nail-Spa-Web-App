@@ -17,8 +17,8 @@ export default function ServicesCreate() {
       .then((data) => setServiceTypes(data));
   }, []);
   return (
-    <div className="border-2 m-2">
-      <div className="bg-white m-3 rounded-xl w-[600px] p-3">
+    <div className=" m-2">
+      <div className="bg-white m-3 rounded-xl w-[600px] border-2 p-3">
         <div className=" grid grid-cols-3">
           <label className="col-span-1 flex">Service Name:</label>
           <input
@@ -30,7 +30,7 @@ export default function ServicesCreate() {
         <div className=" grid grid-cols-3 my-1">
           <label className="col-span-1 flex">Service Type:</label>
           <select
-            className="col-span-2"
+            className="col-span-2 border-2"
             onChange={(e) => setSelectServiceType(e.target.value)}
           >
             <option value={""}>Select a service type</option>

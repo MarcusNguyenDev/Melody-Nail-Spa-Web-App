@@ -54,7 +54,7 @@ export default function ServicesIndex() {
             <label>Search by Type:</label>
             <div>
               <select
-                className="w-[200px] p-1 ml-2"
+                className="w-[200px] p-1 ml-2 border-2"
                 onChange={(e) => setQueryByType(e.target.value)}
               >
                 <option value="">{"No selection"}</option>
