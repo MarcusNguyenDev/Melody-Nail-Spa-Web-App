@@ -239,7 +239,7 @@ export default function TodayBookingIndex() {
             ).map((row, i) => {
               return (
                 <div className="grid grid-cols-7 border-black" key={i}>
-                  <div className="border">{i + 1}</div>
+                  <div className="border">{row.Id}</div>
                   <div className="border">{row.Customer}</div>
                   <div className="border">{row.PhoneNumber}</div>
                   <div className="border">
@@ -303,7 +303,7 @@ export default function TodayBookingIndex() {
               .map((row, i) => {
                 return (
                   <div className="grid grid-cols-7 border-black" key={i}>
-                    <div className="border">{i + 1}</div>
+                    <div className="border">{row.Id}</div>
                     <div className="border">{row.Customer}</div>
                     <div className="border">{row.PhoneNumber}</div>
                     <div className="border">
