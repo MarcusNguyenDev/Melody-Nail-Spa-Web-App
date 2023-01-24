@@ -251,7 +251,7 @@ export default function TodayBookingIndex() {
                         Math.abs(
                           moment({ hours: 0 }).diff(row.BookingDate, "days")
                         ) +
-                        "days"
+                        " days"
                       : moment({ hours: 0 }).diff(row.BookingDate, "days") === 0
                       ? "today"
                       : Math.abs(
