@@ -110,7 +110,7 @@ export default function TodayBookingIndex() {
 
         <div className="flex">
           <button
-            className="p-2 w-[200px] mr-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
+            className="p-2 w-[150px] mr-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
             onClick={() => {
               const message = {
                 method: "GET",
@@ -141,9 +141,36 @@ export default function TodayBookingIndex() {
           >
             All Data Search
           </button>
-
           <button
-            className="p-2 w-[200px] mr-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
+            className="p-2 w-[150px] mx-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
+            onClick={() => {
+              const message = {
+                method: "GET",
+                headers: {
+                  accept: "application/json",
+                  "Content-Type": "application/json",
+                  authorization: "Bearer " + sessionStorage.getItem("jwt"),
+                },
+              };
+              fetch(api.api + "/todayBooking/BookingList/UpComing", message)
+                .then((res) => res.json())
+                .then((data) => {
+                  if (!data.error) {
+                    if (data.length > 0) {
+                      setBookedList(data);
+                    } else {
+                      alert("No upcoming booking");
+                    }
+                  } else {
+                    alert(data.message);
+                  }
+                });
+            }}
+          >
+            Upcoming
+          </button>
+          <button
+            className="p-2 w-[150px] mr-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
             onClick={() => {
               setSelectedDate(new Date());
               setQueryByName("");
@@ -154,7 +181,7 @@ export default function TodayBookingIndex() {
             Reset Search
           </button>
           <button
-            className="p-2 w-[200px] mx-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
+            className="p-2 w-[150px] mx-2 bg-emerald-600 rounded-xl py-1 mb-2 text-white font-bold hover:bg-emerald-400"
             onClick={() => setQRScanning(!QRScanning)}
           >
             QR Scanner
@@ -219,7 +246,7 @@ export default function TodayBookingIndex() {
                     {new moment(row.BookingDate).format("DD/MM/YY")}
                   </div>
                   <div className="border">
-                    {new moment(row.BookingDate).fromNow()}
+                    {new moment(row.BookingDate).startOf("day").fromNow()}
                   </div>
                   <div className="border">{row.CheckedIn}</div>
                   <div className="border">
@@ -273,7 +300,7 @@ export default function TodayBookingIndex() {
                       {new moment(row.BookingDate).format("DD/MM/YY")}
                     </div>
                     <div className="border">
-                      {new moment(row.BookingDate).fromNow()}
+                      {new moment(row.BookingDate).startOf("day").fromNow()}
                     </div>
                     <div className="border">{row.CheckedIn}</div>
                     <div className="border">
