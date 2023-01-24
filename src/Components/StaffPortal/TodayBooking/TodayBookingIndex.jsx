@@ -243,10 +243,20 @@ export default function TodayBookingIndex() {
                   <div className="border">{row.Customer}</div>
                   <div className="border">{row.PhoneNumber}</div>
                   <div className="border">
-                    {new moment(row.BookingDate).format("DD/MM/YY")}
+                    {moment(row.BookingDate).format("DD/MM/YY")}
                   </div>
                   <div className="border">
-                    {new moment(row.BookingDate).startOf("day").fromNow()}
+                    {moment({ hours: 0 }).diff(row.BookingDate, "days") < 0
+                      ? "in " +
+                        Math.abs(
+                          moment({ hours: 0 }).diff(row.BookingDate, "days")
+                        ) +
+                        "days"
+                      : moment({ hours: 0 }).diff(row.BookingDate, "days") === 0
+                      ? "today"
+                      : Math.abs(
+                          moment({ hours: 0 }).diff(row.BookingDate, "days")
+                        ) + "days ago"}
                   </div>
                   <div className="border">{row.CheckedIn}</div>
                   <div className="border">
@@ -297,10 +307,21 @@ export default function TodayBookingIndex() {
                     <div className="border">{row.Customer}</div>
                     <div className="border">{row.PhoneNumber}</div>
                     <div className="border">
-                      {new moment(row.BookingDate).format("DD/MM/YY")}
+                      {moment(row.BookingDate).format("DD/MM/YY")}
                     </div>
                     <div className="border">
-                      {new moment(row.BookingDate).startOf("day").fromNow()}
+                      {moment({ hours: 0 }).diff(row.BookingDate, "days") < 0
+                        ? "in " +
+                          Math.abs(
+                            moment({ hours: 0 }).diff(row.BookingDate, "days")
+                          ) +
+                          " days"
+                        : moment({ hours: 0 }).diff(row.BookingDate, "days") ===
+                          0
+                        ? "today"
+                        : Math.abs(
+                            moment({ hours: 0 }).diff(row.BookingDate, "days")
+                          ) + " days ago"}
                     </div>
                     <div className="border">{row.CheckedIn}</div>
                     <div className="border">
