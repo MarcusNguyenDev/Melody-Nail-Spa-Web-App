@@ -1,22 +1,15 @@
 import React from "react";
-import { useState, useEffect } from "react";
 
 export default function TimeFrame(props) {
-  const [servicesList, setServicesList] = useState([]);
-
-  useEffect(() => {
-    setServicesList(props.services);
-  }, [props.services]);
-
   return (
     <div className="border-2 border-pink-700 my-4 p-2">
-      {servicesList.length > 0 ? (
+      {props.services.length > 0 ? (
         <div>
           <div className="flex m-3 mb-0 font-bold text-emerald-600 text-2xl">
             Time: {props.time}
           </div>
           <div className="flex m-3 mt-0 font-bold">
-            {3 - servicesList.length} left available
+            {3 - props.services.length} left available
           </div>
           <div className="grid grid-cols-6 border bg-blue-400">
             <div className="border">Booking ID</div>
@@ -26,7 +19,7 @@ export default function TimeFrame(props) {
             <div className="border">Finished?</div>
             <div className="border"></div>
           </div>
-          {servicesList.map((data) => {
+          {props.services.map((data) => {
             return (
               <div className="grid grid-cols-6 border" key={data.Id}>
                 <div className="border">{data.BookingId}</div>
@@ -65,7 +58,7 @@ export default function TimeFrame(props) {
             Time: {props.time}
           </div>
           <div className="flex m-3 font-bold">
-            {3 - servicesList.length} left available
+            {3 - props.services.length} left available
           </div>
           <div className="flex m-3 font-bold">No Services booked</div>
         </div>

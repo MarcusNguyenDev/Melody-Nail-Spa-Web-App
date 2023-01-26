@@ -32,7 +32,7 @@ const time = [
   { timeId: 19, time: "6:30pm - 7:00pm" },
 ];
 
-export default function TodayBooking() {
+export default function TodayServices() {
   const [todayServices, setTodayServices] = useState([]);
   const [isUpdating, setIsUpdating] = useState(false);
   const [timeQuery, setTimeQuery] = useState("");
@@ -92,11 +92,12 @@ export default function TodayBooking() {
           BookedServiceId: services.Id,
           BookingId: services.BookingId,
           Time: services.Time,
-          Customer: BookingList.find((e) => e.Id === services.BookingId)
+          Customer: BookingList.filter((e) => e.Id === services.BookingId)[0]
             .Customer,
-          ServiceName: servicesList.find((e) => e.Id === services.ServiceId)
-            .ServiceName,
-          Price: servicesList.find((e) => e.Id === services.ServiceId)
+          ServiceName: servicesList.filter(
+            (e) => e.Id === services.ServiceId
+          )[0].ServiceName,
+          Price: servicesList.filter((e) => e.Id === services.ServiceId)[0]
             .ServicePrice,
           Done: services.Done,
         }))
