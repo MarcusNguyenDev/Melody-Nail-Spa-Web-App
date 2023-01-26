@@ -21,6 +21,7 @@ export default function TodayBookingIndex() {
   const [SelectedDate, setSelectedDate] = useState(new Date());
   const [QRScanning, setQRScanning] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
+  const [isUpdating, setIsUpdating] = useState(false);
   const [perPage] = useState(10);
 
   useEffect(() => {
@@ -46,8 +47,9 @@ export default function TodayBookingIndex() {
       ).then((res) => res.json()),
     ])
       .then(([data]) => setBookedList(data))
+      .then(() => setIsUpdating(false))
       .catch((err) => console.log(err));
-  }, [SelectedDate]);
+  }, [SelectedDate, isUpdating]);
   return (
     <div>
       <div className="flex m-4">
@@ -258,15 +260,85 @@ export default function TodayBookingIndex() {
                           moment({ hours: 0 }).diff(row.BookingDate, "days")
                         ) + "days ago"}
                   </div>
-                  <div className="border">{row.CheckedIn}</div>
+                  <div
+                    className={
+                      row.CheckedIn === "YES"
+                        ? "border text-blue-600 font-extrabold"
+                        : row.CheckedIn === "C"
+                        ? "border text-red-600 font-extrabold"
+                        : "border"
+                    }
+                  >
+                    {row.CheckedIn}
+                  </div>
                   <div className="border">
                     <button
-                      className="text-emerald-500 font-semibold"
+                      className="text-emerald-500 font-semibold mx-1"
                       onClick={() => {
                         navigate(`./view?id=${row.Id}`);
                       }}
                     >
                       View
+                    </button>
+
+                    <button
+                      className="text-blue-600 font-semibold mx-1"
+                      onClick={() => {
+                        const message = {
+                          method: "PUT",
+                          headers: {
+                            accept: "application/json",
+                            "Content-Type": "application/json",
+                            authorization:
+                              "Bearer " + sessionStorage.getItem("jwt"),
+                          },
+                        };
+                        fetch(
+                          api.api +
+                            "/todaybooking/BookingList/checkIn/" +
+                            row.Id,
+                          message
+                        )
+                          .then((res) => res.json())
+                          .then((data) => alert(data.message))
+                          .then(() => setIsUpdating(true));
+                      }}
+                    >
+                      {row.CheckedIn === "YES"
+                        ? "un-Check-IN"
+                        : row.CheckedIn === "C"
+                        ? ""
+                        : "Check-IN"}
+                    </button>
+
+                    <button
+                      className="text-red-500 font-semibold mx-1"
+                      onClick={() => {
+                        const message = {
+                          method: "PUT",
+                          headers: {
+                            accept: "application/json",
+                            "Content-Type": "application/json",
+                            authorization:
+                              "Bearer " + sessionStorage.getItem("jwt"),
+                          },
+                        };
+                        fetch(
+                          api.api +
+                            "/todaybooking/BookingList/cancel/" +
+                            row.Id,
+                          message
+                        )
+                          .then((res) => res.json())
+                          .then((data) => alert(data.message))
+                          .then(() => setIsUpdating(true));
+                      }}
+                    >
+                      {row.CheckedIn === "YES"
+                        ? ""
+                        : row.CheckedIn === "C"
+                        ? "un-Cancel"
+                        : "Cancel"}
                     </button>
                   </div>
                 </div>
@@ -326,12 +398,64 @@ export default function TodayBookingIndex() {
                     <div className="border">{row.CheckedIn}</div>
                     <div className="border">
                       <button
-                        className="text-emerald-500 font-semibold"
+                        className="text-emerald-500 font-semibold mx-1"
                         onClick={() => {
                           navigate(`./view?id=${row.Id}`);
                         }}
                       >
                         View
+                      </button>
+
+                      <button
+                        className="text-blue-600 font-semibold mx-1"
+                        onClick={() => {
+                          const message = {
+                            method: "PUT",
+                            headers: {
+                              accept: "application/json",
+                              "Content-Type": "application/json",
+                              authorization:
+                                "Bearer " + sessionStorage.getItem("jwt"),
+                            },
+                          };
+                          fetch(
+                            api.api +
+                              "/todaybooking/BookingList/checkIn/" +
+                              row.Id,
+                            message
+                          )
+                            .then((res) => res.json())
+                            .then((data) => alert(data.message))
+                            .then(() => setIsUpdating(true));
+                        }}
+                      >
+                        Check IN
+                      </button>
+
+                      <button
+                        className="text-red-500 font-semibold mx-1"
+                        onClick={() => {
+                          const message = {
+                            method: "PUT",
+                            headers: {
+                              accept: "application/json",
+                              "Content-Type": "application/json",
+                              authorization:
+                                "Bearer " + sessionStorage.getItem("jwt"),
+                            },
+                          };
+                          fetch(
+                            api.api +
+                              "/todaybooking/BookingList/cancel/" +
+                              row.Id,
+                            message
+                          )
+                            .then((res) => res.json())
+                            .then((data) => alert(data.message))
+                            .then(() => setIsUpdating(true));
+                        }}
+                      >
+                        Cancel
                       </button>
                     </div>
                   </div>
