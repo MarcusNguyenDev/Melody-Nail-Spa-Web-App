@@ -25,6 +25,7 @@ export default function Users() {
               <input
                 type={"text"}
                 className="w-full border-2 p-1"
+                value={userName}
                 onChange={(e) => setUserName(e.target.value)}
               />
             </div>
@@ -36,6 +37,7 @@ export default function Users() {
               <input
                 type={"password"}
                 className="w-full border-2 p-1"
+                value={password}
                 onChange={(e) => setPassWord(e.target.value)}
               />
             </div>
@@ -54,6 +56,7 @@ export default function Users() {
             <div className="col-span-2">
               <input
                 type={"text"}
+                value={newUserName}
                 className="w-full border-2 p-1"
                 onChange={(e) => setNewUserName(e.target.value)}
               />
@@ -65,6 +68,7 @@ export default function Users() {
             <div className="col-span-2">
               <input
                 type={"password"}
+                value={newPassword}
                 className="w-full border-2 p-1"
                 onChange={(e) => setNewPassWord(e.target.value)}
               />
@@ -86,10 +90,11 @@ export default function Users() {
           className="justify-start t-4 m-4 p-2 w-[100px] bg-pink-300 rounded-2xl font-bold text-pink-800 hover:bg-pink-600"
           onClick={() => {
             const message = {
-              method: "POST",
+              method: "PUT",
               headers: {
                 accept: "application/json",
                 "Content-Type": "application/json",
+                authorization: "Bearer " + sessionStorage.getItem("jwt"),
               },
               body: JSON.stringify({
                 userName: userName,
@@ -98,7 +103,19 @@ export default function Users() {
                 newPassword: newPassword,
               }),
             };
-            fetch(api.api + "/users/put", message);
+            fetch(api.api + "/users/put", message)
+              .then((res) => res.json())
+              .then((data) => {
+                if (!data.error) {
+                  setUserName("");
+                  setPassWord("");
+                  setNewPassWord("");
+                  setNewUserName("");
+                  alert(data.message);
+                } else {
+                  alert(data.message);
+                }
+              });
           }}
         >
           Update
