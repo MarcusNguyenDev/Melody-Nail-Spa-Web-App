@@ -20,7 +20,7 @@ export default function Services() {
             </h1>
           </div>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:mx-64 auto-cols-max gap-5">
+        <div className="grid grid-cols-1 sm:grid-cols-3 xl:mx-64 auto-cols-max gap-5">
           {serviceTypes.map((servicetype) => (
             <div key={servicetype.Id}>
               <div className="flex justify-center">

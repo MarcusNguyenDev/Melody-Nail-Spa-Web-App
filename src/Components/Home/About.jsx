@@ -11,7 +11,7 @@ export default function About() {
             </h1>
           </div>
         </div>
-        <div className="mx-auto flex px-5 lg:py-[100px] lg:px-[300px] py-10 flex-col items-center max-w-[1500px] pt-0 lg:pt-0">
+        <div className="mx-auto flex px-5 lg:py-[100px] lg:px-[250px] py-10 flex-col items-center max-w-[1500px] pt-0 lg:pt-0">
           <div className="bg-hero2 bg-center bg-cover rounded-xl p-1 border-pink-600 border-4 flex justify-center">
             <div className="w-[98%] h-[98%] border-pink-600 border p-8">
               <h1 className="title-font sm:text-[36px] text-2xl text-white font-bold font-Lobster p-2 rounded-xl bg-pink-500">

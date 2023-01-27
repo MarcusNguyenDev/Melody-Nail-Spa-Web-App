@@ -30,7 +30,7 @@ export default function Gallery() {
       .then((data) => setGalleryList(data));
   }, []);
   return (
-    <div className="lg:mx-72">
+    <div className="xl:mx-64">
       <div className="flex m-4 text-3xl font-bold text-pink-700">
         <div className="border-b-2 border-pink-700">Gallery</div>
       </div>
