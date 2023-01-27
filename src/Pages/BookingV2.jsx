@@ -17,6 +17,8 @@ export default function BookingV2() {
   const navigate = useNavigate();
   const [ErrMessage, setErrMessage] = useState("");
 
+  const [bookingPressed, setBookingPressed] = useState(false);
+
   const [selecting, setSelecting] = useState(true);
   const [confirmation, setConfirmation] = useState(false);
 
@@ -226,7 +228,9 @@ export default function BookingV2() {
             </button>
             <button
               className="border p-2 w-[100px] m-4 font-bold bg-pink-500 hover:bg-pink-400 text-white"
+              disabled={bookingPressed}
               onClick={() => {
+                setBookingPressed(true);
                 const message = {
                   method: "POST",
                   headers: {
