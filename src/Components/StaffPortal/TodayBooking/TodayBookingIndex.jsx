@@ -48,6 +48,7 @@ export default function TodayBookingIndex() {
     ])
       .then(([data]) => setBookedList(data))
       .then(() => setIsUpdating(false))
+      .then(() => setCurrentPage(0))
       .catch((err) => console.log(err));
   }, [SelectedDate, isUpdating]);
   return (
