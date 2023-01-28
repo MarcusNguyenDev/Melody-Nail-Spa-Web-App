@@ -22,7 +22,7 @@ export default function TodayBookingIndex() {
   const [QRScanning, setQRScanning] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [isUpdating, setIsUpdating] = useState(false);
-  const [perPage] = useState(10);
+  const [perPage] = useState(25);
 
   useEffect(() => {
     const message = {
