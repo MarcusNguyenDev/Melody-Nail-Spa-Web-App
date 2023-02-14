@@ -7,6 +7,10 @@ export default function ServiceSelection(props) {
       <h2 className="flex font-bold text-pink-700 underline text-xl mb-2">
         Service selection
       </h2>
+      <h3 className="text-pink-700">
+        * If you cannot see the time you want in the list below, it means that
+        the time you want to select is full. Please select another date.
+      </h3>
       {props.selectedService.map((e, index) => (
         <ServiceSelectionElement
           id={e.id}
