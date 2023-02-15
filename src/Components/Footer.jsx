@@ -171,7 +171,7 @@ export default function Footer() {
         <hr className="my-6 border-gray-400" />
         <div className="flexr justify-center">
           <p className="text-sm text-gray-600 font-semibold mb-10 py-1">
-            Copyright © {new Date().getFullYear()} Melody Nail-Spa.
+            Copyright © {new Date().getFullYear()} Melody Nails-Spa.
           </p>
         </div>
       </div>

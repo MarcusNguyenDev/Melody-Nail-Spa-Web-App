@@ -23,7 +23,7 @@ export default function About() {
         <div>
           <div className="flex-col m-4 text-xl text-pink-700">
             <div className="flex border-b-2 border-pink-700">
-              Melody Nail & Spa
+              Melody Nails & Spa
             </div>
             <p className="text-justify text-[16px] text-black">
               Located conveniently in Brassall, QLD Melody Nails & Spa is one of
